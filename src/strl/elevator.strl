@@ -1,0 +1,20 @@
+module ELEVATOR:
+	input SECOND;
+	input CALLF1, CALLF2, CALLF3, CALLF4;	 % One each floor
+	input GOF1, GOF2, GOF3, GOF4;	% In the cabin
+	input OPEN_DOOR, CLOSE_DOOR;
+%	input FLOORTARGET:integer, FLOORBUTTON:integer;
+%	output FLOORBUTTON:integer, FLOORTARGET:integer;
+	output DOOR_OPENED, DOOR_CLOSED;
+
+	signal TARGET:integer, CALLED:integer in
+		
+		run BUTTONS[signal TARGET/FLOORTARGET, CALLED/FLOORBUTTON]		
+
+		||
+
+		run CABIN[signal TARGET/FLOORTARGET, CALLED/FLOORBUTTON]
+
+	end signal
+
+end module

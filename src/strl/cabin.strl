@@ -1,0 +1,92 @@
+module CABIN:
+	input SECOND;
+	input FLOORTARGET:integer, FLOORBUTTON:integer;
+	output DOOR_OPENED, DOOR_CLOSED;
+
+	var floor:=1:integer, duration:integer, doorstate:=false:boolean in
+	loop		
+		await FLOORBUTTON;
+		if floor = ?FLOORBUTTON then
+			if doorstate = false then   % if is closed 
+				await SECOND;
+				await SECOND;
+				emit DOOR_OPENED;
+				doorstate:=true;
+			end if;
+			% Now we have to go to another floor
+
+		else
+
+			if doorstate = true then   % if is opened
+				await SECOND;
+				await SECOND;
+				emit DOOR_CLOSED;
+				doorstate:=false;
+			end if;
+				
+			if floor > ?FLOORBUTTON then
+				duration := (floor - ?FLOORBUTTON);
+			else
+				duration := (?FLOORBUTTON - floor);
+			end if;
+
+			repeat 4*duration times
+				await SECOND;
+%				await SECOND;
+%				await SECOND;
+%				await SECOND;
+			end repeat;
+
+			await SECOND;
+			await SECOND;
+			emit DOOR_OPENED;
+			doorstate := true;
+
+			floor := ?FLOORBUTTON;
+			
+			await SECOND;
+			await SECOND;
+			await SECOND;
+			emit DOOR_CLOSED;
+			doorstate:=false;
+
+			% Now we have to go to another floor
+		end if;
+
+		await FLOORTARGET;
+		if doorstate = true then   % if is opened
+			await SECOND;
+			await SECOND;
+			emit DOOR_CLOSED;
+		end if;
+
+		if floor > ?FLOORTARGET then
+			duration := (floor - ?FLOORTARGET);
+		else
+			duration := (?FLOORTARGET - floor);
+		end if;
+
+		repeat 4*duration times
+			await SECOND;
+%				await SECOND;
+%				await SECOND;
+%				await SECOND;
+		end repeat;
+
+		await SECOND;
+		await SECOND;
+		emit DOOR_OPENED;
+		doorstate := true;
+
+		floor := ?FLOORTARGET;
+
+		await SECOND;
+		await SECOND;
+		await SECOND;
+		emit DOOR_CLOSED;
+		doorstate:=false;
+
+end loop
+end var
+
+end module

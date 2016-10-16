@@ -1,0 +1,26 @@
+# Object files
+*.o
+
+# Libraries
+*.lib
+*.a
+*.la
+*.lo
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# Executables
+*.exe
+*.out
+
+# Debug files
+*.dSYM/
+*.su
+
+# Other parts of the project
+.~*
+bin/

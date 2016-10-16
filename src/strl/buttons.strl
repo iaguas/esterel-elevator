@@ -1,36 +1,35 @@
 module BUTTONS:
-	input CALLF1, CALLF2, CALLF3, CALLF4;	 % One each floor
-	input GOF1, GOF2, GOF3, GOF4;	% In the cabin
-	%input OPENDOOR;	% In the cabin
-	output FLOORBUTTON:integer, FLOORTARGET:integer;
+    input CALLF1, CALLF2, CALLF3, CALLF4;	 % One for each floor
+    input GOF1, GOF2, GOF3, GOF4;	% In the cabin
+    input OPENDOOR;	% In the cabin
+    output FLOORBUTTON:integer, FLOORTARGET:integer;
 
-		
-		loop	% One each floor
-			await
-				case CALLF1 do
-					emit FLOORBUTTON(1);
-				case CALLF2 do
-					emit FLOORBUTTON(2);
-				case CALLF3 do
-					emit FLOORBUTTON(3);
-				case CALLF4 do
-					emit FLOORBUTTON(4);
-			end await
-		end loop
+    loop	% One for each floor
+        await
+        case CALLF1 do
+            emit FLOORBUTTON(1);
+        case CALLF2 do
+            emit FLOORBUTTON(2);
+        case CALLF3 do
+            emit FLOORBUTTON(3);
+        case CALLF4 do
+            emit FLOORBUTTON(4);
+        end await
+    end loop
 
-		|| 
+    || 
 
-		loop 	% In the cabin
-			await
-				case GOF1 do
-					emit FLOORTARGET(1);
-				case GOF2 do
-					emit FLOORTARGET(2);
-				case GOF3 do
-					emit FLOORTARGET(3);
-				case GOF4 do
-					emit FLOORTARGET(4);
-			end await
-		end loop
+    loop 	% In the cabin
+        await
+        case GOF1 do
+            emit FLOORTARGET(1);
+        case GOF2 do
+            emit FLOORTARGET(2);
+        case GOF3 do
+            emit FLOORTARGET(3);
+        case GOF4 do
+            emit FLOORTARGET(4);
+        end await
+    end loop
 
 end module

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+ This file defines the esterel grammar to use with a GtkSourceView program.
+
+ Author: Iñigo Aguas Ardaiz <inigo.aguasardaiz@edu.esiee.fr>
+
+-->
+
+<language id="esterel" _name="Esterel" version="2.0" _section="Source">
+  <metadata>
+    <property name="mimetypes">text/x-esterel</property> 
+    <property name="globs">*.strl</property>
+    <property name="line-comment-start">%</property>
+    <property name="block-comment-start">%{</property>
+    <property name="block-comment-end">}%</property>
+  </metadata>
+
+  <styles>
+    <style id="comment"         _name="Comment"         map-to="def:comment"/>
+    <style id="string"          _name="String"          map-to="def:string"/>
+    <style id="keyword"         _name="Keyword"         map-to="def:keyword"/>
+    <style id="decimal"         _name="Decimal"         map-to="def:decimal"/>
+    <style id="type"            _name="Data Type"       map-to="def:type"/>
+    <style id="preprocessor"    _name="Preprocessor"    map-to="def:preprocessor"/>
+    <style id="boolean"         _name="Boolean value"   map-to="def:boolean"/>
+    <style id="operator"        _name="Operator"        map-to="def:operator"/>
+  </styles>
+
+  <default-regex-options case-sensitive="false"/>
+
+  <definitions>
+
+    <context id="string" style-ref="string" class="string" class-disabled="no-spell-check">
+      <start>[uUrR]?'</start>
+      <end>'</end>
+    </context>
+
+    <context id="line-comment" style-ref="comment" end-at-line-end="true" class="comment" class-disabled="no-spell-check">
+      <start>%</start>
+      <include>
+        <context ref="def:in-comment"/>
+      </include>
+    </context>
+    
+    <context id="block-comment" style-ref="comment" class="comment" class-disabled="no-spell-check">
+      <start>%\{</start>
+      <end>\}%</end>
+      <include>
+        <context ref="def:in-comment"/>
+      </include>
+    </context>
+
+    <context id="general-format" style-ref="keyword">
+      <keyword>module</keyword>
+      <keyword>:</keyword>
+      <keyword>end</keyword>
+      <keyword>signal</keyword>
+      <keyword>constant</keyword>
+      <keyword>var</keyword>
+      <keyword>,</keyword>
+      <keyword>;</keyword>
+      <keyword>task</keyword>
+      <keyword>:=</keyword>
+      <keyword>=&lt;</keyword>
+      <keyword>relation</keyword>
+      <keyword>#</keyword>
+      <keyword>pause</keyword>
+      <keyword>halt</keyword>
+      <keyword>||</keyword>
+      <keyword>[</keyword>
+      <keyword>]</keyword>
+    </context>
+
+    <context id="functions-and-function-modifiers" style-ref="keyword">
+      <keyword>function</keyword>
+      <keyword>procedure</keyword>
+    </context>
+
+    <context id="boolean-bitwise-operators" style-ref="keyword">
+      <keyword>if</keyword>
+      <keyword>then</keyword>
+      <keyword>else</keyword>
+      <keyword>elsif</keyword>
+      <keyword>and</keyword>
+      <keyword>not</keyword>
+      <keyword>or</keyword>
+      <keyword>xor</keyword>
+      <keyword>present</keyword>
+      <keyword>case</keyword>
+      <keyword>do</keyword>
+    </context>
+
+    <context id="math-operators" style-ref="operator">
+      <keyword>mod</keyword>
+
+    </context>
+    
+    <context id="signal-operators" style-ref="preprocessor">
+      <keyword>input</keyword>
+      <keyword>output</keyword>
+      <keyword>inputoutput</keyword>
+      <keyword>return</keyword>
+      <keyword>combine</keyword>
+      <keyword>with</keyword>
+      <keyword>sensor</keyword>
+      <keyword>await</keyword>
+      <keyword>emit</keyword>
+      <keyword>sustain</keyword>
+    </context>
+
+    <context id="loop-flow-and-exceptions-keywords" style-ref="keyword">
+      <keyword>abort</keyword>
+      <keyword>weak</keyword>
+      <keyword>inmediate</keyword>
+      <keyword>when</keyword>
+      <keyword>loop</keyword>
+      <keyword>each</keyword>
+      <keyword>every</keyword>
+      <keyword>do</keyword>
+      <keyword>positive</keyword>
+      <keyword>repeat</keyword>
+      <keyword>times</keyword>
+      <keyword>trap</keyword>
+      <keyword>in</keyword>
+      <keyword>exit</keyword>
+      <keyword>suspend</keyword>
+      <keyword>handle</keyword>
+    </context>
+
+    <context id="type-class-and-object-keywords" style-ref="keyword">
+      <keyword>type</keyword>
+      <keyword>exec</keyword>
+      <keyword>run</keyword>
+      <keyword>call</keyword>
+    </context>
+
+    <context id="builtin-types" style-ref="type">
+      <keyword>integer</keyword>
+      <keyword>float</keyword>
+      <keyword>boolean</keyword>
+      <keyword>doulbe</keyword>
+    </context>
+
+    <context id="builtin-functions" style-ref="keyword">
+      <keyword>pre</keyword>
+    </context>
+
+    <context id="builtin-values" style-ref="boolean">
+      <keyword>false</keyword>
+      <keyword>true</keyword>
+    </context>
+
+    <context id="number" style-ref="decimal">
+      <match extended="true">
+        (?&lt;![\w\.])
+        (([0-9]+)|([0-9]+\.[0-9]+([Ee][-]?[0-9]+)?))
+        (?![\w\.])
+      </match>
+    </context>
+
+    <context id="esterel" class="no-spell-check">
+      <include>
+        <context ref="string"/>
+        <context ref="line-comment"/>
+        <context ref="block-comment"/>
+        <context ref="general-format"/>
+        <context ref="functions-and-function-modifiers"/>
+        <context ref="boolean-bitwise-operators"/>
+        <context ref="math-operators"/>
+        <context ref="signal-operators"/>
+        <context ref="loop-flow-and-exceptions-keywords"/>
+        <context ref="type-class-and-object-keywords"/>
+        <context ref="builtin-types"/>
+        <context ref="builtin-functions"/>
+        <context ref="builtin-values"/>
+        <context ref="number"/>
+      </include>
+    </context>
+
+  </definitions>
+</language>

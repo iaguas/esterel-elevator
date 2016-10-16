@@ -1,0 +1,41 @@
+module OpenDoor:
+    input SECOND;
+    output DOOR_OPENED;
+
+    await SECOND;
+    await SECOND;
+    emit DOOR_OPENED;
+    
+end module
+
+
+module CloseDoor:
+    input SECOND;
+    output DOOR_CLOSED;
+
+    await SECOND;
+    await SECOND;
+    emit DOOR_CLOSED;
+    
+end module
+
+
+module FloorProcessingTime:
+    input SECOND;
+
+    await SECOND; % It is needed to avoid instantaneous loops.
+    repeat 2-1 times   % 16-1 times
+        await SECOND;
+    end repeat;
+    
+end module
+
+
+module DoorAwaitingTime:
+    input SECOND;
+
+    repeat 0 times			% 3 times
+        await SECOND;
+    end repeat;
+
+end module

@@ -1,92 +1,106 @@
 module CABIN:
-	input SECOND;
-	input FLOORTARGET:integer, FLOORBUTTON:integer;
-	output DOOR_OPENED, DOOR_CLOSED;
+    input SECOND;
+    input OPENDOOR;
+    input FLOORTARGET:integer, FLOORBUTTON:integer;
+    output DOOR_OPENED, DOOR_CLOSED;
+    output FLOORSTATE:integer;
 
-	var floor:=1:integer, duration:integer, doorstate:=false:boolean in
-	loop		
-		await FLOORBUTTON;
-		if floor = ?FLOORBUTTON then
-			if doorstate = false then   % if is closed 
-				await SECOND;
-				await SECOND;
-				emit DOOR_OPENED;
-				doorstate:=true;
-			end if;
-			% Now we have to go to another floor
+    var floor:=1:integer, duration:integer, doorstate:=false:boolean in
+    emit FLOORSTATE(floor);
+    loop		
+	    await 
+        case FLOORBUTTON do
+            if floor = ?FLOORBUTTON then
+                if doorstate = false then   % if is closed 
+                    run OpenDoor;
+                    doorstate:=true;
+                end if;
 
-		else
+            else
 
-			if doorstate = true then   % if is opened
-				await SECOND;
-				await SECOND;
-				emit DOOR_CLOSED;
-				doorstate:=false;
-			end if;
+                if doorstate = true then   % if is opened
+                    run CloseDoor;
+                    doorstate:=false;
+                end if;
 				
-			if floor > ?FLOORBUTTON then
-				duration := (floor - ?FLOORBUTTON);
-			else
-				duration := (?FLOORBUTTON - floor);
-			end if;
+                if floor > ?FLOORBUTTON then
+                    duration := (floor - ?FLOORBUTTON);
+                    repeat duration times
+                        run FloorProcessingTime;
+                        floor := floor - 1;
+                        emit FLOORSTATE(floor);
+                    end repeat;
+                else
+                    duration := (?FLOORBUTTON - floor);
+                    repeat duration times
+                        run FloorProcessingTime;
+                        floor := floor + 1;
+                        emit FLOORSTATE(floor);
+			        end repeat;
+                end if;
 
-			repeat 4*duration times
-				await SECOND;
-%				await SECOND;
-%				await SECOND;
-%				await SECOND;
-			end repeat;
+                run OpenDoor;
+                doorstate := true;
 
-			await SECOND;
-			await SECOND;
-			emit DOOR_OPENED;
-			doorstate := true;
+                run DoorAwaitingTime;
 
-			floor := ?FLOORBUTTON;
-			
-			await SECOND;
-			await SECOND;
-			await SECOND;
-			emit DOOR_CLOSED;
-			doorstate:=false;
+                run CloseDoor;
+                doorstate:=false;
 
-			% Now we have to go to another floor
-		end if;
+            end if;
 
-		await FLOORTARGET;
-		if doorstate = true then   % if is opened
-			await SECOND;
-			await SECOND;
-			emit DOOR_CLOSED;
-		end if;
+        case FLOORTARGET do
+            if floor = ?FLOORTARGET then
+                if doorstate = false then   % if is closed 
+                    run OpenDoor;
+                    doorstate:=true;
+                end if;
 
-		if floor > ?FLOORTARGET then
-			duration := (floor - ?FLOORTARGET);
-		else
-			duration := (?FLOORTARGET - floor);
-		end if;
+            else
 
-		repeat 4*duration times
-			await SECOND;
-%				await SECOND;
-%				await SECOND;
-%				await SECOND;
-		end repeat;
+                if doorstate = true then   % if is opened
+                    run CloseDoor;
+                    doorstate:=false;
+                end if;
 
-		await SECOND;
-		await SECOND;
-		emit DOOR_OPENED;
-		doorstate := true;
+                if floor > ?FLOORTARGET then
+                    duration := (floor - ?FLOORTARGET);
+                    repeat duration times
+                        run FloorProcessingTime;
+                        floor := floor - 1;
+                        emit FLOORSTATE(floor);
+                    end repeat;
+                else
+                    duration := (?FLOORTARGET - floor);
+                    repeat duration times
+                        run FloorProcessingTime;
+                        floor := floor + 1;
+                        emit FLOORSTATE(floor);
+                    end repeat;
+                end if;
 
-		floor := ?FLOORTARGET;
+                run OpenDoor;
+                doorstate := true;
 
-		await SECOND;
-		await SECOND;
-		await SECOND;
-		emit DOOR_CLOSED;
-		doorstate:=false;
+                run DoorAwaitingTime;
 
-end loop
-end var
+                run CloseDoor;
+                doorstate:=false;
+            end if;
+
+        case OPENDOOR do
+            if doorstate = false then   % if is closed 
+                run OpenDoor;
+                doorstate:=true;
+
+                run DoorAwaitingTime;
+
+                run CloseDoor;
+                doorstate:=false;
+            end if;
+            
+        end await
+    end loop
+    end var
 
 end module

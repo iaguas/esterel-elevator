@@ -1,0 +1,36 @@
+module ex2:
+
+    input IN;
+    output TIC, TAC;
+    output COUNTER:	integer;
+	
+    signal XTIC, XTAC in
+        var C:=0:integer in
+            loop
+                await IN;
+                C := C + 1;
+                emit COUNTER(C);
+                if (C mod 2) = 0 then
+                    emit XTAC;
+                else
+                    emit XTIC;
+                end if
+            end loop
+        end var
+
+        ||
+
+        loop
+            await XTIC;
+            emit TIC;
+        end loop
+
+        ||
+
+        loop
+            await XTAC;
+            emit TAC;
+        end loop
+    end signal
+
+end module

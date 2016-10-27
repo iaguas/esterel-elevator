@@ -1,0 +1,60 @@
+module Mod:
+
+    input CALL, HANGUP, PICKUP, NUMBER, SECONDS;
+    output CALLFAILURE, BELL;
+    output TIMECOMMUNICATION:integer;
+
+    loop
+    trap CALL, PICKUP in
+        emit BELL;
+
+        % INCOMING CALLS
+        handle CALL do
+            abort	
+                repeat 20 times
+                    emit BELL;
+                    await SECONDS;	
+                end repeat;
+            when PICKUP;	
+
+            present PICKUP then
+                abort
+                    var TIME:=0:integer in
+                        loop 
+                            TIME := TIME + 1;
+                            emit TIMECOMMUNICATION(TIME);
+                            await SECONDS;
+                        end loop
+                    end var
+                when HANGUP
+            else
+                emit CALLFAILURE;
+            end present
+
+
+		% OUTGOING CALLS
+        handle PICKUP do
+        abort
+            abort	
+                repeat 10 times
+                    await SECONDS;	
+                end repeat;
+            when NUMBER;	
+
+            present NUMBER then
+                abort
+                    var TIME:=0:integer in
+                        loop 
+                            TIME := TIME + 1;
+                            emit TIMECOMMUNICATION(TIME);
+                            await SECONDS;
+                        end loop
+                    end var
+                when HANGUP
+            else
+                emit CALLFAILURE;
+            end present
+        when CALL
+    end trap
+    end loop
+end module

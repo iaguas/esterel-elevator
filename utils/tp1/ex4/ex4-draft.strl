@@ -1,0 +1,74 @@
+module Mod:
+
+    input CALL, HANGUP, PICKUP, NUMBER, SECONDS;
+    output CALLFAILURE, BELL;
+    output TIMECOMMUNICATION:integer;
+
+    signal X1, X2 in
+
+        % INCOMING CALLS
+        var x:integer in 
+            loop
+
+                await CALL;
+                emit X1(1);
+                abort
+                    repeat 20 times
+                        emit BELL;
+                        await SECONDS;	
+                    end repeat;
+                when PICKUP;	
+
+                present PICKUP then
+                    abort
+                        var TIME:=0:integer in
+                            loop 
+                                TIME := TIME + 1;
+                                emit TIMECOMMUNICATION(TIME);
+                                await SECONDS;
+                            end loop
+                        end var
+                    when HANGUP
+                else
+                    emit CALLFAILURE;
+                end present
+		        
+            end loop
+        end var
+
+        ||
+    
+        % OUTGOING CALLS
+        var x:integer in
+            loop
+            
+                x = ?X1;
+                if x = ?X1
+                    await PICKUP;
+                    abort	
+                        repeat 10 times
+                            await SECONDS;	
+                        end repeat;
+                    when NUMBER;	
+
+                    present NUMBER then
+                        abort
+                            var TIME:=0:integer in
+                                loop 
+                                    TIME := TIME + 1;
+                                    emit TIMECOMMUNICATION(TIME);
+                                    await SECONDS;
+                                end loop
+                            end var
+                        when HANGUP
+                    else
+                        emit CALLFAILURE;
+                    end present
+                end if
+                
+            end loop
+        end var
+
+	end signal
+
+end module

@@ -1,0 +1,36 @@
+module calcul1:
+
+    input OPERANDE : integer;
+    input ADDITION;
+    input SOUSTRACTION;
+    input DIVISION;
+    input MULTIPLICATION;
+    output LCD : integer;
+
+    var resultat, op1, op2 : integer in
+        loop
+            resultat:=0;
+            op1:=0;
+            op2:=0;
+
+            await OPERANDE;
+            op1:=?OPERANDE;
+            await OPERANDE;
+            op2:=?OPERANDE;
+            
+            await 
+            case ADDITION do 
+                resultat:=op1+op2;
+            case SOUSTRACTION do 
+                resultat:=op1-op2;
+            case DIVISION do 
+                resultat:=op1/op2;
+            case MULTIPLICATION do 
+                resultat:=op1*op2;
+            end await;
+            
+            emit LCD(resultat);
+        end loop
+    end var
+    
+end module

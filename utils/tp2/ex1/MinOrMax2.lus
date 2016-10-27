@@ -1,0 +1,17 @@
+node Min(X:int) returns (min:int);
+let
+    min=X->if (X<pre min) then X else pre min;
+tel
+
+node Max(X:int) returns (max:int);
+let
+    max=X->if (X>pre max) then X else pre max;
+tel
+
+node MinOrMax2(x:int; c:bool) returns (a:int);
+    var mi, ma: int;
+let
+    mi=x->current(Min(x when not c));
+    ma=x->current(Max(x when c));
+    a=if c then ma else mi;
+tel

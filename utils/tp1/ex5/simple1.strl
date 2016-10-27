@@ -1,0 +1,9 @@
+module simple1:
+
+    input IN: integer;
+    output OUT: integer;
+
+    await IN;
+    emit OUT(?IN);
+
+end module

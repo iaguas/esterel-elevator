@@ -1,0 +1,24 @@
+node WD1(set, reset, deadline: bool) returns (alarm: bool);
+var is_set: bool;
+let
+    alarm = deadline and is_set;
+    is_set = set -> if set then true
+        else if reset then false
+    	else pre(is_set);
+    assert not (set and reset);
+tel
+
+node EDGE(b:bool) returns (edge:bool)
+let
+	edge=false->if (b=false) and pre(b)=true then false else true;
+tel
+
+node WD2(set, reset: bool; delay: int) returns (alarm:bool; remain:int);
+    var   deadline: bool;
+let
+    alarm = WD1(set, reset, deadline);
+    deadline = false -> EDGE(remain = 0);
+    remain = if set then delay
+        else if 0-> pre(remain)>0 then 0-> pre(remain)-1
+        else 0-> pre(remain);
+tel

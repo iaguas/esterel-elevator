@@ -1,0 +1,9 @@
+node WD1(set, reset, deadline: bool) returns (alarm: bool);
+var is_set: bool;
+let
+    alarm = deadline and is_set;
+    is_set = set -> if set then true
+    	else if reset then false
+    	else pre(is_set);
+    assert not (set and reset);
+tel

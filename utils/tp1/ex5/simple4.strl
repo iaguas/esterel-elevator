@@ -1,0 +1,9 @@
+module Mod:
+
+    input IN: integer;
+    output OUT: integer;
+
+    await IN;
+    emit OUT(?IN);
+
+end module

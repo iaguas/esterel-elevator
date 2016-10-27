@@ -1,0 +1,14 @@
+module simple1:
+
+    input IN;
+    output OUT;
+
+    await IN;
+    emit OUT;
+
+    %{ fbhjsbhj
+    sdfjknk
+    sdnfjkkj
+    }%
+    
+end module

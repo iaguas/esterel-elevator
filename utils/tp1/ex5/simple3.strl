@@ -1,0 +1,11 @@
+module simple3:
+
+    input IN: integer;
+    output OUT: integer;
+
+    loop
+        await IN;
+        emit OUT(?IN);
+    end loop
+
+end module

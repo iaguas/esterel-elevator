@@ -1,0 +1,19 @@
+node MinMax(X:int) returns (min, max:int);
+let
+	min=X->if (X<pre min) then X else pre min;
+	max=X->if (X>pre max) then X else pre max;
+tel
+
+node Average(x,y:int) returns (A:int);
+var S:int;
+let
+	A=(x+y)/2;
+	S=x+y;
+tel
+
+node MinMaxAverage(x:int) returns (a:int);
+var min, max: int;
+let
+	a=Average(min, max);
+	min, max= MinMax(x); --several outputs
+tel

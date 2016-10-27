@@ -1,0 +1,12 @@
+node clock(tt : bool) returns (h,m,s : int);
+let
+    s = 0 -> if pre s = 59 then 0 else pre s +1;
+    m = 0 -> if pre s = 59 then
+        if pre m = 59 then 0
+        else pre m +1
+    else pre m;
+    h = 0 -> if pre m = 59 then
+        if pre h = 23 then 0
+        else pre h +1
+    else pre h;
+tel

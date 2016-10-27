@@ -1,0 +1,11 @@
+module simple2:
+
+    input IN;
+    output OUT;
+
+    loop
+        await IN;
+        emit OUT;
+    end loop
+
+end module

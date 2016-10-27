@@ -1,0 +1,34 @@
+module ex3:
+
+    input SWITCH;
+    input DATA_IN:integer;
+    output DATA_OUT:integer;
+
+    loop
+	    
+	    abort
+            loop
+                await DATA_IN;
+                emit DATA_OUT(?DATA_IN + 1);
+            end loop
+        when SWITCH;
+        
+        await SWITCH;
+        
+    end loop
+
+    ||
+
+    loop 
+    
+        await SWITCH;
+        abort
+            loop
+                await DATA_IN;
+                emit DATA_OUT(?DATA_IN - 1);
+            end loop
+        when SWITCH;
+    
+    end loop
+
+end module

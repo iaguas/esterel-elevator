@@ -1,0 +1,31 @@
+
+AR        =ar -r
+RANLIB    =ranlib
+RM	  =rm -rf
+CC 	  = gcc
+LD	  = $(CC)
+
+CFLAGS    =  -g
+CINCLUDE  = 
+LIBS	  = 
+
+
+COMPILE   = $(CC) $(CFLAGS) $(CINCLUDE) -c
+
+
+.c.o:
+	$(COMPILE) $<
+
+
+####################################################
+
+CALCUL = calcul.c calcul_main.c 
+
+
+calcul:	$(CALCUL:.c=.o)
+	$(CC) $(CALCUL:.c=.o) $(LIBS) -o calcul
+
+
+clean:
+	$(RM)  *.a *.o *.bak core calcul
+

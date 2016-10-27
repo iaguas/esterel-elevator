@@ -1,0 +1,60 @@
+module calcul3:
+
+    input OPERANDE : integer;
+    input ADDITION;
+    input SOUSTRACTION;
+    input DIVISION;
+    input MULTIPLICATION;
+    input RESET;
+    input SWITCH;
+    output LCD : integer;
+    output WRITE : integer;
+
+    signal X:=0:integer in 
+        var resultat, op1, op2 : integer in
+            loop
+                abort
+                    resultat:=0;
+                    op1:=0;
+                    op2:=0;
+
+                    await OPERANDE;
+                    op1 := ?OPERANDE;
+                    await OPERANDE;
+                    op2 := ?OPERANDE;
+                    
+                    await 
+                    case ADDITION do 
+                        resultat:=op1+op2;
+                    case SOUSTRACTION do 
+                        resultat:=op1-op2;
+                    case DIVISION do 
+                        resultat:=op1/op2;
+                    case MULTIPLICATION do 
+                        resultat:=op1*op2;
+                    end await;
+                    
+                    emit LCD(resultat);
+
+                    if ?X=1 then
+                        emit WRITE(resultat);
+                    end if
+                   
+                when RESET do
+                    emit LCD(0);
+                end abort
+            end loop
+        end var
+        
+        ||
+
+        loop
+            await SWITCH;
+            emit X(1);
+            await SWITCH;
+            emit X(0);
+        end loop
+        
+    end signal
+
+end module

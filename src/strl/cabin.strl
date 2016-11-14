@@ -1,105 +1,75 @@
 module CABIN:
     input SECOND;
     input OPENDOOR;
-    input FLOORTARGET:integer, FLOORBUTTON:integer;
-    output DOOR_OPENED, DOOR_CLOSED;
-    output FLOORSTATE:integer;
+    input STOP;
+    input FLOORTARGET:integer;
+    output DOOROPENED, DOORCLOSED;
+    output CURRENTFLOOR:integer;
 
-    var floor:=1:integer, duration:integer, doorstate:=false:boolean in
-    emit FLOORSTATE(floor);
-    loop		
+    var floor:=1:integer, duration:integer, doorOpenState:=false:boolean, elevatorUpState:=true:boolean in
+    emit CURRENTFLOOR(floor);
+    loop
+                %pause;		
 	    await 
-        case FLOORBUTTON do
-            if floor = ?FLOORBUTTON then
-                if doorstate = false then   % if is closed 
-                    run OpenDoor;
-                    doorstate:=true;
-                end if;
-
-            else
-
-                if doorstate = true then   % if is opened
-                    run CloseDoor;
-                    doorstate:=false;
-                end if;
-				
-                if floor > ?FLOORBUTTON then
-                    duration := (floor - ?FLOORBUTTON);
-                    repeat duration times
-                        run FloorProcessingTime;
-                        floor := floor - 1;
-                        emit FLOORSTATE(floor);
-                    end repeat;
-                else
-                    duration := (?FLOORBUTTON - floor);
-                    repeat duration times
-                        run FloorProcessingTime;
-                        floor := floor + 1;
-                        emit FLOORSTATE(floor);
-			        end repeat;
-                end if;
-
-                run OpenDoor;
-                doorstate := true;
-
-                run DoorAwaitingTime;
-
-                run CloseDoor;
-                doorstate:=false;
-
-            end if;
-
         case FLOORTARGET do
             if floor = ?FLOORTARGET then
-                if doorstate = false then   % if is closed 
+                if doorOpenState = false then   % if is closed 
                     run OpenDoor;
-                    doorstate:=true;
+                    doorOpenState:=true;
                 end if;
 
             else
 
-                if doorstate = true then   % if is opened
+                if doorOpenState = true then   % if is opened
                     run CloseDoor;
-                    doorstate:=false;
+                    doorOpenState:=false;
                 end if;
-
-                if floor > ?FLOORTARGET then
+				
+                if floor > ?FLOORTARGET then % Bajando
+                    elevatorUpState:=false;
                     duration := (floor - ?FLOORTARGET);
                     repeat duration times
                         run FloorProcessingTime;
                         floor := floor - 1;
-                        emit FLOORSTATE(floor);
+                        emit CURRENTFLOOR(floor);
+                        present STOP then
+                            run OpenDoor;
+                            doorOpenState:=true;
+                            run DoorAwaitingTime;
+                            run CloseDoor;
+                            doorOpenState:=false;
+                        end present;
                     end repeat;
-                else
+                else % Subiendo
+                    elevatorUpState := true;
                     duration := (?FLOORTARGET - floor);
                     repeat duration times
                         run FloorProcessingTime;
                         floor := floor + 1;
-                        emit FLOORSTATE(floor);
-                    end repeat;
+                        emit CURRENTFLOOR(floor);
+                        present STOP then
+                            run OpenDoor;
+                            doorOpenState:=true;
+                            run DoorAwaitingTime;
+                            run CloseDoor;
+                            doorOpenState:=false;
+                        end present;
+			        end repeat;
                 end if;
 
-                run OpenDoor;
-                doorstate := true;
-
-                run DoorAwaitingTime;
-
-                run CloseDoor;
-                doorstate:=false;
             end if;
 
         case OPENDOOR do
-            if doorstate = false then   % if is closed 
+            if doorOpenState = false then   % if is closed 
                 run OpenDoor;
-                doorstate:=true;
-
+                doorOpenState:=true;
                 run DoorAwaitingTime;
-
                 run CloseDoor;
-                doorstate:=false;
+                doorOpenState:=false;
             end if;
             
-        end await
+        end await;
+        pause;
     end loop
     end var
 

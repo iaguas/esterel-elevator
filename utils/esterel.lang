@@ -7,7 +7,7 @@
 
 -->
 
-<language id="esterel" _name="Esterel" version="2.0" _section="Source">
+<language id="esterel" _name="Esterel" version="1.1" _section="Source">
   <metadata>
     <property name="mimetypes">text/x-esterel</property> 
     <property name="globs">*.strl</property>
@@ -27,7 +27,7 @@
     <style id="operator"        _name="Operator"        map-to="def:operator"/>
   </styles>
 
-  <default-regex-options case-sensitive="false"/>
+  <!-- <default-regex-options case-sensitive="false"/> -->
 
   <definitions>
 
@@ -93,7 +93,6 @@
 
     <context id="math-operators" style-ref="operator">
       <keyword>mod</keyword>
-
     </context>
     
     <context id="signal-operators" style-ref="preprocessor">
@@ -162,8 +161,8 @@
     <context id="esterel" class="no-spell-check">
       <include>
         <context ref="string"/>
-        <context ref="line-comment"/>
         <context ref="block-comment"/>
+        <context ref="line-comment"/>
         <context ref="general-format"/>
         <context ref="functions-and-function-modifiers"/>
         <context ref="boolean-bitwise-operators"/>

@@ -1,21 +1,21 @@
 module OpenDoor:
     input SECOND;
-    output DOOR_OPENED;
+    output DOOROPENED;
 
     await SECOND;
     await SECOND;
-    emit DOOR_OPENED;
+    emit DOOROPENED;
     
 end module
 
 
 module CloseDoor:
     input SECOND;
-    output DOOR_CLOSED;
+    output DOORCLOSED;
 
     await SECOND;
     await SECOND;
-    emit DOOR_CLOSED;
+    emit DOORCLOSED;
     
 end module
 

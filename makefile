@@ -8,8 +8,8 @@ LD        = $(CC)
 STRL      = esterel
 XES       = xes
 
-CFLAGS    = -c -g -m32
-CINCLUDE  = 
+CFLAGS    = -c -g
+CINCLUDE  = -m32
 LIBS	  = 
 
 STRLFLAGS = -simul

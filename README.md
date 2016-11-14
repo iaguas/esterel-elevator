@@ -1,8 +1,12 @@
-#Elevator Project
+# Esterel Elevator Project
 Project for the subject "Critical Application Development" of ESIEE Paris. It implements the controller of an elevator.
 
 ## Project description
-All the information about the project can be discovered [here](https://github.com/iaguas/esterel-elevator/blob/master/doc/Project.pdf)
+All the information about the project can be discovered [here](https://github.com/iaguas/esterel-elevator/blob/master/doc/Project.pdf). The extra asumptions will be described now.
+
+### Extra asumtions
+* The elevator starts at 1st floor.
+* The elevator starts with doors closed.
 
 ## Compilation and simulation
 There is a `makefile` programed to make all in a computer with esterel installed. There are several options:

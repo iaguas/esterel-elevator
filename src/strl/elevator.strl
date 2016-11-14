@@ -5,17 +5,19 @@ module ELEVATOR:
     input OPENDOOR;
 %   input FLOORTARGET:integer, FLOORBUTTON:integer;
 %   output FLOORBUTTON:integer, FLOORTARGET:integer;
-    output DOOR_OPENED, DOOR_CLOSED;
-    output FLOORSTATE:integer;
+    output DOOROPENED, DOORCLOSED;
+    output CURRENTFLOOR:integer;
+    output WRONG, STOP;
+    output LF1, LF2, LF3, LF4, LOUT;
 
-    signal TARGET:integer, CALL:integer in
+    signal TARGET:integer in
 		
-        run BUTTONS[signal TARGET/FLOORTARGET,  CALL/FLOORBUTTON]		
+        run BUTTONS [signal TARGET/FLOORTARGET]
 
         ||
 
-        run CABIN[signal TARGET/FLOORTARGET, CALL/FLOORBUTTON]
-
+        run CABIN [signal TARGET/FLOORTARGET]
+        
     end signal
 
 end module

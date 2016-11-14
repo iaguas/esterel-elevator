@@ -2,34 +2,126 @@ module BUTTONS:
     input CALLF1, CALLF2, CALLF3, CALLF4;	 % One for each floor
     input GOF1, GOF2, GOF3, GOF4;	% In the cabin
     input OPENDOOR;	% In the cabin
-    output FLOORBUTTON:integer, FLOORTARGET:integer;
-
+    input SECOND;
+    input CURRENTFLOOR:integer;
+    output FLOORTARGET:integer;
+    output WRONG, STOP;
+    output LF1, LF2, LF3, LF4, LOUT;
+    output DOOROPENED, DOORCLOSED;
+    
+    
+    var  stateF1:=false:boolean, stateF2:=false:boolean, stateF3:=false:boolean, stateF4:=false:boolean, elevatorFree:=true:boolean, elevatorUpState:=true:boolean,
+nextFloor:=1:integer in
     loop	% One for each floor
-        await
-        case CALLF1 do
-            emit FLOORBUTTON(1);
-        case CALLF2 do
-            emit FLOORBUTTON(2);
-        case CALLF3 do
-            emit FLOORBUTTON(3);
-        case CALLF4 do
-            emit FLOORBUTTON(4);
-        end await
-    end loop
+        present CALLF1 or GOF1 then
+            stateF1 := true;
+            present GOF1 then
+               emit LF1;
+            end present;
+        end present;
+        present CALLF2 or GOF2 then
+            stateF2 := true;
+            present GOF2 then
+               emit LF2;
+            end present;
+        end present;
+        present CALLF3 or GOF3 then
+            stateF3 := true;
+            present GOF3 then
+               emit LF3;
+            end present;
+        end present;
+        present CALLF4 or GOF4 then
+            stateF4 := true;
+            present GOF4 then
+               emit LF4;
+            end present;
+        end present;
 
-    || 
+        present CURRENTFLOOR then
+            if ?CURRENTFLOOR = 1 then
+                if stateF1 then
+                    stateF1 := false;
+                    emit LF1;
+                    emit STOP;
+                end if;
+            elsif ?CURRENTFLOOR = 2 then
+                if stateF2 then
+                    stateF2 := false;
+                    emit LF2;
+                    emit STOP;
+                end if;
+            elsif ?CURRENTFLOOR = 3 then
+                if stateF3 then
+                    stateF3 := false;
+                    emit LF3;
+                    emit STOP;
+                end if;
+            elsif ?CURRENTFLOOR = 4 then
+                if stateF4 then
+                    stateF4 := false;
+                    emit LF4;
+                    emit STOP;
+                end if;
+            else
+                emit WRONG;
+            end if;
+            if ?CURRENTFLOOR = nextFloor then
+                elevatorFree := true;
+            end if
+        end present;
+        
+        if elevatorFree and (stateF1 or stateF2 or stateF3 or stateF4) then
+            % SOMETHING TO DO WITH BUTTONS
+            if elevatorUpState then
+                if stateF4 and nextFloor < 4 then
+                    emit FLOORTARGET(4);
+                    nextFloor:=4;
+                elsif stateF3 and nextFloor < 3 then
+                    emit FLOORTARGET(3);
+                    nextFloor:=3;
+                else
+                    elevatorUpState:=false;
+                    if stateF1 then
+                        emit FLOORTARGET(1);
+                        nextFloor:=1;
+                    elsif stateF2 then
+                        emit FLOORTARGET(2);
+                        nextFloor:=2;
+                    elsif stateF3 then
+                        emit FLOORTARGET(3);
+                        nextFloor:=3;
+                    end if;
+                end if;
+            else % elevatorDownState
+                if stateF1 and nextFloor > 1 then
+                    emit FLOORTARGET(1);
+                    nextFloor:=1;
+                elsif stateF2 and nextFloor > 2 then
+                    emit FLOORTARGET(2);
+                    nextFloor:=2;
+                else
+                    elevatorUpState:=true;
+                    if stateF4 then
+                        emit FLOORTARGET(4);
+                        nextFloor:=4;
+                    elsif stateF2 then
+                        emit FLOORTARGET(3);
+                        nextFloor:=3;
+                    elsif stateF3 then
+                        emit FLOORTARGET(2);
+                        nextFloor:=2;
+                    end if;
+                end if;
+            end if;
+            elevatorFree := false;
+            emit LOUT;
+        else 
+            emit LOUT;
+        end if;
 
-    loop 	% In the cabin
-        await
-        case GOF1 do
-            emit FLOORTARGET(1);
-        case GOF2 do
-            emit FLOORTARGET(2);
-        case GOF3 do
-            emit FLOORTARGET(3);
-        case GOF4 do
-            emit FLOORTARGET(4);
-        end await
+        pause;
     end loop
+    end var
 
 end module

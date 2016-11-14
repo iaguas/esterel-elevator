@@ -47,7 +47,7 @@ calcul2-simul: calcul2.strl
 	$(CC) $(CFLAGS) -c -m32 calcul2-simul.c
 	xes -Xcomp -m32 calcul2-simul.o
 	
-calcul3-simul: calcul1.strl
+calcul3-simul: calcul3.strl
 	$(STRL) -simul calcul3.strl -B calcul3-simul
 	$(CC) $(CFLAGS) -c -m32 calcul3-simul.c
 	xes -Xcomp -m32 calcul3-simul.o

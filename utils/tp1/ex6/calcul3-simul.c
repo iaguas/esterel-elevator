@@ -425,74 +425,74 @@ __calcul3_V7 = _false;
 }
 static int __calcul3_Check16 [] = {1,0,1,7};
 static void __calcul3_A17 () {
-__calcul3_V13 = 0;
-}
-static int __calcul3_Check17 [] = {1,0,1,13};
-static void __calcul3_A18 () {
 __calcul3_V10 = 0;
 }
-static int __calcul3_Check18 [] = {1,0,1,10};
-static void __calcul3_A19 () {
+static int __calcul3_Check17 [] = {1,0,1,10};
+static void __calcul3_A18 () {
 __calcul3_V11 = 0;
 }
-static int __calcul3_Check19 [] = {1,0,1,11};
-static void __calcul3_A20 () {
+static int __calcul3_Check18 [] = {1,0,1,11};
+static void __calcul3_A19 () {
 __calcul3_V12 = 0;
 }
-static int __calcul3_Check20 [] = {1,0,1,12};
-static void __calcul3_A21 () {
-__calcul3_V11 = __calcul3_V0;
+static int __calcul3_Check19 [] = {1,0,1,12};
+static void __calcul3_A20 () {
+__calcul3_V13 = 0;
 }
-static int __calcul3_Check21 [] = {1,1,0,1,11};
-static void __calcul3_A22 () {
+static int __calcul3_Check20 [] = {1,0,1,13};
+static void __calcul3_A21 () {
 __calcul3_V12 = __calcul3_V0;
 }
-static int __calcul3_Check22 [] = {1,1,0,1,12};
+static int __calcul3_Check21 [] = {1,1,0,1,12};
+static void __calcul3_A22 () {
+__calcul3_V13 = __calcul3_V0;
+}
+static int __calcul3_Check22 [] = {1,1,0,1,13};
 static void __calcul3_A23 () {
-__calcul3_V10 = __calcul3_V11+__calcul3_V12;
+__calcul3_V11 = __calcul3_V12+__calcul3_V13;
 }
-static int __calcul3_Check23 [] = {1,2,11,12,1,10};
+static int __calcul3_Check23 [] = {1,2,12,13,1,11};
 static void __calcul3_A24 () {
-__calcul3_V10 = __calcul3_V11-__calcul3_V12;
+__calcul3_V11 = __calcul3_V12-__calcul3_V13;
 }
-static int __calcul3_Check24 [] = {1,2,11,12,1,10};
+static int __calcul3_Check24 [] = {1,2,12,13,1,11};
 static void __calcul3_A25 () {
-__calcul3_V10 = __calcul3_V11/__calcul3_V12;
+__calcul3_V11 = __calcul3_V12/__calcul3_V13;
 }
-static int __calcul3_Check25 [] = {1,2,11,12,1,10};
+static int __calcul3_Check25 [] = {1,2,12,13,1,11};
 static void __calcul3_A26 () {
-__calcul3_V10 = __calcul3_V11*__calcul3_V12;
+__calcul3_V11 = __calcul3_V12*__calcul3_V13;
 }
-static int __calcul3_Check26 [] = {1,2,11,12,1,10};
+static int __calcul3_Check26 [] = {1,2,12,13,1,11};
 static void __calcul3_A27 () {
-__calcul3_V8 = __calcul3_V10;
+__calcul3_V8 = __calcul3_V11;
 }
-static int __calcul3_Check27 [] = {1,1,10,1,8};
+static int __calcul3_Check27 [] = {1,1,11,1,8};
 static void __calcul3_A28 () {
-__calcul3_V9 = __calcul3_V10;
+__calcul3_V9 = __calcul3_V11;
 }
-static int __calcul3_Check28 [] = {1,1,10,1,9};
+static int __calcul3_Check28 [] = {1,1,11,1,9};
 static void __calcul3_A29 () {
 __calcul3_V8 = 0;
 }
 static int __calcul3_Check29 [] = {1,0,1,8};
 static void __calcul3_A30 () {
-__calcul3_V13 = 1;
+__calcul3_V10 = 1;
 }
-static int __calcul3_Check30 [] = {1,0,1,13};
+static int __calcul3_Check30 [] = {1,0,1,10};
 static void __calcul3_A31 () {
-__calcul3_V13 = 0;
+__calcul3_V10 = 0;
 }
-static int __calcul3_Check31 [] = {1,0,1,13};
+static int __calcul3_Check31 [] = {1,0,1,10};
 
 /* PROCEDURE CALLS */
 
 /* CONDITIONS */
 
 static int __calcul3_A32 () {
-__calcul3_GENERIC_TEST(__calcul3_V13==1);
+__calcul3_GENERIC_TEST(__calcul3_V10==1);
 }
-static int __calcul3_Check32 [] = {1,1,13,0};
+static int __calcul3_Check32 [] = {1,1,10,0};
 
 /* DECREMENTS */
 
@@ -525,17 +525,17 @@ __ResetVariable(9);
 static int __calcul3_Check35 [] = {1,0,0};
 static void __calcul3_A36 () {
 ;
-__ResetVariable(10);
+__ResetVariable(11);
 }
 static int __calcul3_Check36 [] = {1,0,0};
 static void __calcul3_A37 () {
 ;
-__ResetVariable(11);
+__ResetVariable(12);
 }
 static int __calcul3_Check37 [] = {1,0,0};
 static void __calcul3_A38 () {
 ;
-__ResetVariable(12);
+__ResetVariable(13);
 }
 static int __calcul3_Check38 [] = {1,0,0};
 
@@ -619,7 +619,7 @@ return 0;
 /* SIMULATION TABLES */
 
 struct __InstanceEntry __calcul3_InstanceTable [] = {
-{"calcul3",0,"","calcul3.strl",{1,1,1,0},{1,61,1,0},{0,0,0,0}},
+{"calcul3",0,"","calcul3.strl",{1,1,1,0},{1,60,1,0},{0,0,0,0}},
 };
 
 struct __SignalEntry __calcul3_SignalTable [] = {
@@ -632,7 +632,7 @@ struct __SignalEntry __calcul3_SignalTable [] = {
 {"SWITCH",33,0,0,{1,9,11,0},0,(void*) NULL,0,(void*) NULL,0,(void*) NULL},
 {"LCD",2,8,0,{1,10,12,0},0,(void*) NULL,0,(void*) NULL,0,(void*) NULL},
 {"WRITE",2,9,0,{1,11,12,0},0,(void*) NULL,0,(void*) NULL,0,(void*) NULL},
-{"X",8,13,0,{1,14,16,0},0,(void*) NULL,0,(void*) NULL,0,(void*) NULL}};
+{"X",8,10,0,{1,13,12,0},0,(void*) NULL,0,(void*) NULL,0,(void*) NULL}};
 
 struct __InputEntry __calcul3_InputTable [] = {
 {"OPERANDE",85,"integer",0,-3,0,0,_check_integer,calcul3_IS_OPERANDE,0,{1,3,11,0}},
@@ -654,17 +654,17 @@ struct __VariableEntry __calcul3_VariableTable [] = {
 {"__calcul3_V7","V7","boolean",-2,2,0,(char*)&__calcul3_V7,"SWITCH",0,0,0,{1,9,11,0}},
 {"__calcul3_V8","V8","integer",-3,1,0,(char*)&__calcul3_V8,"LCD",0,0,0,{1,10,12,0}},
 {"__calcul3_V9","V9","integer",-3,1,0,(char*)&__calcul3_V9,"WRITE",0,0,0,{1,11,12,0}},
-{"__calcul3_V10","V10","integer",-3,0,0,(char*)&__calcul3_V10,"resultat",0,0,0,{1,13,9,0}},
-{"__calcul3_V11","V11","integer",-3,0,0,(char*)&__calcul3_V11,"op1",0,0,0,{1,13,19,0}},
-{"__calcul3_V12","V12","integer",-3,0,0,(char*)&__calcul3_V12,"op2",0,0,0,{1,13,24,0}},
-{"__calcul3_V13","V13","integer",-3,1,0,(char*)&__calcul3_V13,"X",0,0,0,{1,14,16,0}}
+{"__calcul3_V10","V10","integer",-3,1,0,(char*)&__calcul3_V10,"X",0,0,0,{1,13,12,0}},
+{"__calcul3_V11","V11","integer",-3,0,0,(char*)&__calcul3_V11,"resultat",0,0,0,{1,14,13,0}},
+{"__calcul3_V12","V12","integer",-3,0,0,(char*)&__calcul3_V12,"op1",0,0,0,{1,14,23,0}},
+{"__calcul3_V13","V13","integer",-3,0,0,(char*)&__calcul3_V13,"op2",0,0,0,{1,14,28,0}}
 };
 
 struct __HaltEntry __calcul3_HaltTable [] = {
-{{1,61,1,0}},
-{{1,21,17,0}},
-{{1,23,17,0}},
-{{1,26,17,0}},
+{{1,60,1,0}},
+{{1,21,21,0}},
+{{1,23,21,0}},
+{{1,26,21,0}},
 {{1,52,13,0}},
 {{1,54,13,0}}
 };
@@ -899,6 +899,12 @@ fprintf(stderr, "__calcul3_A35\n");
 }
 E[16] = !(_true);
 if (__calcul3_R[0]) {
+__CheckVariables(__calcul3_CheckArray[17]);__calcul3_A17();
+#ifdef TRACE_ACTION
+fprintf(stderr, "__calcul3_A17\n");
+#endif
+}
+if (__calcul3_R[0]) {
 __CheckVariables(__calcul3_CheckArray[36]);__calcul3_A36();
 #ifdef TRACE_ACTION
 fprintf(stderr, "__calcul3_A36\n");
@@ -914,12 +920,6 @@ if (__calcul3_R[0]) {
 __CheckVariables(__calcul3_CheckArray[38]);__calcul3_A38();
 #ifdef TRACE_ACTION
 fprintf(stderr, "__calcul3_A38\n");
-#endif
-}
-if (__calcul3_R[0]) {
-__CheckVariables(__calcul3_CheckArray[17]);__calcul3_A17();
-#ifdef TRACE_ACTION
-fprintf(stderr, "__calcul3_A17\n");
 #endif
 }
 E[17] = __calcul3_R[0]||E[2]||E[13]||(E[8]&&!(E[13]));

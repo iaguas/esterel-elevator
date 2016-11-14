@@ -291,13 +291,13 @@ static integer __ELEVATOR_V28;
 static integer __ELEVATOR_V29;
 
 static unsigned short __ELEVATOR_HaltList[28];
-static unsigned short __ELEVATOR_AwaitedList[21];
-static unsigned short __ELEVATOR_EmittedList[21];
+static unsigned short __ELEVATOR_AwaitedList[22];
+static unsigned short __ELEVATOR_EmittedList[22];
 static unsigned short __ELEVATOR_StartedList[1];
 static unsigned short __ELEVATOR_KilledList[1];
 static unsigned short __ELEVATOR_SuspendedList[1];
 static unsigned short __ELEVATOR_ActiveList[1];
-static unsigned short __ELEVATOR_AllAwaitedList[21]={10,0,1,2,3,4,5,6,7,8,9};
+static unsigned short __ELEVATOR_AllAwaitedList[22]={10,0,1,2,3,4,5,6,7,8,9};
 
 
 /* INPUT FUNCTIONS */
@@ -423,14 +423,14 @@ static int __ELEVATOR_Check10 [] = {1,0,0};
 
 static void __ELEVATOR_A11 () {
 #ifdef __OUTPUT
-ELEVATOR_O_DOOR_OPENED();
+ELEVATOR_O_DOOROPENED();
 #endif
 __AppendToList(__ELEVATOR_EmittedList,10);
 }
 static int __ELEVATOR_Check11 [] = {1,0,0};
 static void __ELEVATOR_A12 () {
 #ifdef __OUTPUT
-ELEVATOR_O_DOOR_CLOSED();
+ELEVATOR_O_DOORCLOSED();
 #endif
 __AppendToList(__ELEVATOR_EmittedList,11);
 }
@@ -458,507 +458,514 @@ __AppendToList(__ELEVATOR_EmittedList,14);
 static int __ELEVATOR_Check15 [] = {1,0,0};
 static void __ELEVATOR_A16 () {
 #ifdef __OUTPUT
-ELEVATOR_O_F1();
+ELEVATOR_O_LF1();
 #endif
 __AppendToList(__ELEVATOR_EmittedList,15);
 }
 static int __ELEVATOR_Check16 [] = {1,0,0};
 static void __ELEVATOR_A17 () {
 #ifdef __OUTPUT
-ELEVATOR_O_F2();
+ELEVATOR_O_LF2();
 #endif
 __AppendToList(__ELEVATOR_EmittedList,16);
 }
 static int __ELEVATOR_Check17 [] = {1,0,0};
 static void __ELEVATOR_A18 () {
 #ifdef __OUTPUT
-ELEVATOR_O_F3();
+ELEVATOR_O_LF3();
 #endif
 __AppendToList(__ELEVATOR_EmittedList,17);
 }
 static int __ELEVATOR_Check18 [] = {1,0,0};
 static void __ELEVATOR_A19 () {
 #ifdef __OUTPUT
-ELEVATOR_O_F4();
+ELEVATOR_O_LF4();
 #endif
 __AppendToList(__ELEVATOR_EmittedList,18);
 }
 static int __ELEVATOR_Check19 [] = {1,0,0};
+static void __ELEVATOR_A20 () {
+#ifdef __OUTPUT
+ELEVATOR_O_LOUT();
+#endif
+__AppendToList(__ELEVATOR_EmittedList,19);
+}
+static int __ELEVATOR_Check20 [] = {1,0,0};
 
 /* ASSIGNMENTS */
 
-static void __ELEVATOR_A20 () {
+static void __ELEVATOR_A21 () {
 __ELEVATOR_V0 = _false;
 }
-static int __ELEVATOR_Check20 [] = {1,0,1,0};
-static void __ELEVATOR_A21 () {
+static int __ELEVATOR_Check21 [] = {1,0,1,0};
+static void __ELEVATOR_A22 () {
 __ELEVATOR_V1 = _false;
 }
-static int __ELEVATOR_Check21 [] = {1,0,1,1};
-static void __ELEVATOR_A22 () {
+static int __ELEVATOR_Check22 [] = {1,0,1,1};
+static void __ELEVATOR_A23 () {
 __ELEVATOR_V2 = _false;
 }
-static int __ELEVATOR_Check22 [] = {1,0,1,2};
-static void __ELEVATOR_A23 () {
+static int __ELEVATOR_Check23 [] = {1,0,1,2};
+static void __ELEVATOR_A24 () {
 __ELEVATOR_V3 = _false;
 }
-static int __ELEVATOR_Check23 [] = {1,0,1,3};
-static void __ELEVATOR_A24 () {
+static int __ELEVATOR_Check24 [] = {1,0,1,3};
+static void __ELEVATOR_A25 () {
 __ELEVATOR_V4 = _false;
 }
-static int __ELEVATOR_Check24 [] = {1,0,1,4};
-static void __ELEVATOR_A25 () {
+static int __ELEVATOR_Check25 [] = {1,0,1,4};
+static void __ELEVATOR_A26 () {
 __ELEVATOR_V5 = _false;
 }
-static int __ELEVATOR_Check25 [] = {1,0,1,5};
-static void __ELEVATOR_A26 () {
+static int __ELEVATOR_Check26 [] = {1,0,1,5};
+static void __ELEVATOR_A27 () {
 __ELEVATOR_V6 = _false;
 }
-static int __ELEVATOR_Check26 [] = {1,0,1,6};
-static void __ELEVATOR_A27 () {
+static int __ELEVATOR_Check27 [] = {1,0,1,6};
+static void __ELEVATOR_A28 () {
 __ELEVATOR_V7 = _false;
 }
-static int __ELEVATOR_Check27 [] = {1,0,1,7};
-static void __ELEVATOR_A28 () {
+static int __ELEVATOR_Check28 [] = {1,0,1,7};
+static void __ELEVATOR_A29 () {
 __ELEVATOR_V8 = _false;
 }
-static int __ELEVATOR_Check28 [] = {1,0,1,8};
-static void __ELEVATOR_A29 () {
+static int __ELEVATOR_Check29 [] = {1,0,1,8};
+static void __ELEVATOR_A30 () {
 __ELEVATOR_V9 = _false;
 }
-static int __ELEVATOR_Check29 [] = {1,0,1,9};
-static void __ELEVATOR_A30 () {
+static int __ELEVATOR_Check30 [] = {1,0,1,9};
+static void __ELEVATOR_A31 () {
 __ELEVATOR_V12 = _false;
 }
-static int __ELEVATOR_Check30 [] = {1,0,1,12};
-static void __ELEVATOR_A31 () {
+static int __ELEVATOR_Check31 [] = {1,0,1,12};
+static void __ELEVATOR_A32 () {
 __ELEVATOR_V13 = _false;
 }
-static int __ELEVATOR_Check31 [] = {1,0,1,13};
-static void __ELEVATOR_A32 () {
+static int __ELEVATOR_Check32 [] = {1,0,1,13};
+static void __ELEVATOR_A33 () {
 __ELEVATOR_V14 = _false;
 }
-static int __ELEVATOR_Check32 [] = {1,0,1,14};
-static void __ELEVATOR_A33 () {
+static int __ELEVATOR_Check33 [] = {1,0,1,14};
+static void __ELEVATOR_A34 () {
 __ELEVATOR_V15 = _false;
 }
-static int __ELEVATOR_Check33 [] = {1,0,1,15};
-static void __ELEVATOR_A34 () {
+static int __ELEVATOR_Check34 [] = {1,0,1,15};
+static void __ELEVATOR_A35 () {
 __ELEVATOR_V16 = _true;
 }
-static int __ELEVATOR_Check34 [] = {1,0,1,16};
-static void __ELEVATOR_A35 () {
+static int __ELEVATOR_Check35 [] = {1,0,1,16};
+static void __ELEVATOR_A36 () {
 __ELEVATOR_V17 = _true;
 }
-static int __ELEVATOR_Check35 [] = {1,0,1,17};
-static void __ELEVATOR_A36 () {
+static int __ELEVATOR_Check36 [] = {1,0,1,17};
+static void __ELEVATOR_A37 () {
 __ELEVATOR_V18 = 1;
 }
-static int __ELEVATOR_Check36 [] = {1,0,1,18};
-static void __ELEVATOR_A37 () {
+static int __ELEVATOR_Check37 [] = {1,0,1,18};
+static void __ELEVATOR_A38 () {
 __ELEVATOR_V12 = _true;
 }
-static int __ELEVATOR_Check37 [] = {1,0,1,12};
-static void __ELEVATOR_A38 () {
+static int __ELEVATOR_Check38 [] = {1,0,1,12};
+static void __ELEVATOR_A39 () {
 __ELEVATOR_V13 = _true;
 }
-static int __ELEVATOR_Check38 [] = {1,0,1,13};
-static void __ELEVATOR_A39 () {
+static int __ELEVATOR_Check39 [] = {1,0,1,13};
+static void __ELEVATOR_A40 () {
 __ELEVATOR_V14 = _true;
 }
-static int __ELEVATOR_Check39 [] = {1,0,1,14};
-static void __ELEVATOR_A40 () {
+static int __ELEVATOR_Check40 [] = {1,0,1,14};
+static void __ELEVATOR_A41 () {
 __ELEVATOR_V15 = _true;
 }
-static int __ELEVATOR_Check40 [] = {1,0,1,15};
-static void __ELEVATOR_A41 () {
+static int __ELEVATOR_Check41 [] = {1,0,1,15};
+static void __ELEVATOR_A42 () {
 __ELEVATOR_V12 = _false;
 }
-static int __ELEVATOR_Check41 [] = {1,0,1,12};
-static void __ELEVATOR_A42 () {
+static int __ELEVATOR_Check42 [] = {1,0,1,12};
+static void __ELEVATOR_A43 () {
 __ELEVATOR_V13 = _false;
 }
-static int __ELEVATOR_Check42 [] = {1,0,1,13};
-static void __ELEVATOR_A43 () {
+static int __ELEVATOR_Check43 [] = {1,0,1,13};
+static void __ELEVATOR_A44 () {
 __ELEVATOR_V14 = _false;
 }
-static int __ELEVATOR_Check43 [] = {1,0,1,14};
-static void __ELEVATOR_A44 () {
+static int __ELEVATOR_Check44 [] = {1,0,1,14};
+static void __ELEVATOR_A45 () {
 __ELEVATOR_V15 = _false;
 }
-static int __ELEVATOR_Check44 [] = {1,0,1,15};
-static void __ELEVATOR_A45 () {
+static int __ELEVATOR_Check45 [] = {1,0,1,15};
+static void __ELEVATOR_A46 () {
 __ELEVATOR_V16 = _true;
 }
-static int __ELEVATOR_Check45 [] = {1,0,1,16};
-static void __ELEVATOR_A46 () {
+static int __ELEVATOR_Check46 [] = {1,0,1,16};
+static void __ELEVATOR_A47 () {
 __ELEVATOR_V11 = 4;
 }
-static int __ELEVATOR_Check46 [] = {1,0,1,11};
-static void __ELEVATOR_A47 () {
+static int __ELEVATOR_Check47 [] = {1,0,1,11};
+static void __ELEVATOR_A48 () {
 __ELEVATOR_V18 = 4;
 }
-static int __ELEVATOR_Check47 [] = {1,0,1,18};
-static void __ELEVATOR_A48 () {
+static int __ELEVATOR_Check48 [] = {1,0,1,18};
+static void __ELEVATOR_A49 () {
 __ELEVATOR_V11 = 3;
 }
-static int __ELEVATOR_Check48 [] = {1,0,1,11};
-static void __ELEVATOR_A49 () {
+static int __ELEVATOR_Check49 [] = {1,0,1,11};
+static void __ELEVATOR_A50 () {
 __ELEVATOR_V18 = 3;
 }
-static int __ELEVATOR_Check49 [] = {1,0,1,18};
-static void __ELEVATOR_A50 () {
+static int __ELEVATOR_Check50 [] = {1,0,1,18};
+static void __ELEVATOR_A51 () {
 __ELEVATOR_V17 = _false;
 }
-static int __ELEVATOR_Check50 [] = {1,0,1,17};
-static void __ELEVATOR_A51 () {
+static int __ELEVATOR_Check51 [] = {1,0,1,17};
+static void __ELEVATOR_A52 () {
 __ELEVATOR_V11 = 1;
 }
-static int __ELEVATOR_Check51 [] = {1,0,1,11};
-static void __ELEVATOR_A52 () {
+static int __ELEVATOR_Check52 [] = {1,0,1,11};
+static void __ELEVATOR_A53 () {
 __ELEVATOR_V18 = 1;
 }
-static int __ELEVATOR_Check52 [] = {1,0,1,18};
-static void __ELEVATOR_A53 () {
+static int __ELEVATOR_Check53 [] = {1,0,1,18};
+static void __ELEVATOR_A54 () {
 __ELEVATOR_V11 = 2;
 }
-static int __ELEVATOR_Check53 [] = {1,0,1,11};
-static void __ELEVATOR_A54 () {
+static int __ELEVATOR_Check54 [] = {1,0,1,11};
+static void __ELEVATOR_A55 () {
 __ELEVATOR_V18 = 2;
 }
-static int __ELEVATOR_Check54 [] = {1,0,1,18};
-static void __ELEVATOR_A55 () {
+static int __ELEVATOR_Check55 [] = {1,0,1,18};
+static void __ELEVATOR_A56 () {
 __ELEVATOR_V11 = 3;
 }
-static int __ELEVATOR_Check55 [] = {1,0,1,11};
-static void __ELEVATOR_A56 () {
+static int __ELEVATOR_Check56 [] = {1,0,1,11};
+static void __ELEVATOR_A57 () {
 __ELEVATOR_V18 = 3;
 }
-static int __ELEVATOR_Check56 [] = {1,0,1,18};
-static void __ELEVATOR_A57 () {
+static int __ELEVATOR_Check57 [] = {1,0,1,18};
+static void __ELEVATOR_A58 () {
 __ELEVATOR_V11 = 1;
 }
-static int __ELEVATOR_Check57 [] = {1,0,1,11};
-static void __ELEVATOR_A58 () {
+static int __ELEVATOR_Check58 [] = {1,0,1,11};
+static void __ELEVATOR_A59 () {
 __ELEVATOR_V18 = 1;
 }
-static int __ELEVATOR_Check58 [] = {1,0,1,18};
-static void __ELEVATOR_A59 () {
+static int __ELEVATOR_Check59 [] = {1,0,1,18};
+static void __ELEVATOR_A60 () {
 __ELEVATOR_V11 = 2;
 }
-static int __ELEVATOR_Check59 [] = {1,0,1,11};
-static void __ELEVATOR_A60 () {
+static int __ELEVATOR_Check60 [] = {1,0,1,11};
+static void __ELEVATOR_A61 () {
 __ELEVATOR_V18 = 2;
 }
-static int __ELEVATOR_Check60 [] = {1,0,1,18};
-static void __ELEVATOR_A61 () {
+static int __ELEVATOR_Check61 [] = {1,0,1,18};
+static void __ELEVATOR_A62 () {
 __ELEVATOR_V17 = _true;
 }
-static int __ELEVATOR_Check61 [] = {1,0,1,17};
-static void __ELEVATOR_A62 () {
+static int __ELEVATOR_Check62 [] = {1,0,1,17};
+static void __ELEVATOR_A63 () {
 __ELEVATOR_V11 = 4;
 }
-static int __ELEVATOR_Check62 [] = {1,0,1,11};
-static void __ELEVATOR_A63 () {
+static int __ELEVATOR_Check63 [] = {1,0,1,11};
+static void __ELEVATOR_A64 () {
 __ELEVATOR_V18 = 4;
 }
-static int __ELEVATOR_Check63 [] = {1,0,1,18};
-static void __ELEVATOR_A64 () {
+static int __ELEVATOR_Check64 [] = {1,0,1,18};
+static void __ELEVATOR_A65 () {
 __ELEVATOR_V11 = 3;
 }
-static int __ELEVATOR_Check64 [] = {1,0,1,11};
-static void __ELEVATOR_A65 () {
+static int __ELEVATOR_Check65 [] = {1,0,1,11};
+static void __ELEVATOR_A66 () {
 __ELEVATOR_V18 = 3;
 }
-static int __ELEVATOR_Check65 [] = {1,0,1,18};
-static void __ELEVATOR_A66 () {
+static int __ELEVATOR_Check66 [] = {1,0,1,18};
+static void __ELEVATOR_A67 () {
 __ELEVATOR_V11 = 2;
 }
-static int __ELEVATOR_Check66 [] = {1,0,1,11};
-static void __ELEVATOR_A67 () {
+static int __ELEVATOR_Check67 [] = {1,0,1,11};
+static void __ELEVATOR_A68 () {
 __ELEVATOR_V18 = 2;
 }
-static int __ELEVATOR_Check67 [] = {1,0,1,18};
-static void __ELEVATOR_A68 () {
+static int __ELEVATOR_Check68 [] = {1,0,1,18};
+static void __ELEVATOR_A69 () {
 __ELEVATOR_V16 = _false;
 }
-static int __ELEVATOR_Check68 [] = {1,0,1,16};
-static void __ELEVATOR_A69 () {
+static int __ELEVATOR_Check69 [] = {1,0,1,16};
+static void __ELEVATOR_A70 () {
 __ELEVATOR_V19 = 1;
 }
-static int __ELEVATOR_Check69 [] = {1,0,1,19};
-static void __ELEVATOR_A70 () {
+static int __ELEVATOR_Check70 [] = {1,0,1,19};
+static void __ELEVATOR_A71 () {
 __ELEVATOR_V21 = _false;
 }
-static int __ELEVATOR_Check70 [] = {1,0,1,21};
-static void __ELEVATOR_A71 () {
+static int __ELEVATOR_Check71 [] = {1,0,1,21};
+static void __ELEVATOR_A72 () {
 __ELEVATOR_V22 = _true;
 }
-static int __ELEVATOR_Check71 [] = {1,0,1,22};
-static void __ELEVATOR_A72 () {
+static int __ELEVATOR_Check72 [] = {1,0,1,22};
+static void __ELEVATOR_A73 () {
 __ELEVATOR_V10 = __ELEVATOR_V19;
 }
-static int __ELEVATOR_Check72 [] = {1,1,19,1,10};
-static void __ELEVATOR_A73 () {
-__ELEVATOR_V21 = _true;
-}
-static int __ELEVATOR_Check73 [] = {1,0,1,21};
+static int __ELEVATOR_Check73 [] = {1,1,19,1,10};
 static void __ELEVATOR_A74 () {
-__ELEVATOR_V21 = _false;
+__ELEVATOR_V21 = _true;
 }
 static int __ELEVATOR_Check74 [] = {1,0,1,21};
 static void __ELEVATOR_A75 () {
+__ELEVATOR_V21 = _false;
+}
+static int __ELEVATOR_Check75 [] = {1,0,1,21};
+static void __ELEVATOR_A76 () {
 __ELEVATOR_V22 = _false;
 }
-static int __ELEVATOR_Check75 [] = {1,0,1,22};
-static void __ELEVATOR_A76 () {
+static int __ELEVATOR_Check76 [] = {1,0,1,22};
+static void __ELEVATOR_A77 () {
 __ELEVATOR_V20 = __ELEVATOR_V19-__ELEVATOR_V11;
 }
-static int __ELEVATOR_Check76 [] = {1,2,19,11,1,20};
-static void __ELEVATOR_A77 () {
+static int __ELEVATOR_Check77 [] = {1,2,19,11,1,20};
+static void __ELEVATOR_A78 () {
 __ELEVATOR_V23 = __ELEVATOR_V20;
 }
-static int __ELEVATOR_Check77 [] = {1,1,20,1,23};
-static void __ELEVATOR_A78 () {
+static int __ELEVATOR_Check78 [] = {1,1,20,1,23};
+static void __ELEVATOR_A79 () {
 __ELEVATOR_V19 = __ELEVATOR_V19-1;
 }
-static int __ELEVATOR_Check78 [] = {1,1,19,1,19};
-static void __ELEVATOR_A79 () {
+static int __ELEVATOR_Check79 [] = {1,1,19,1,19};
+static void __ELEVATOR_A80 () {
 __ELEVATOR_V10 = __ELEVATOR_V19;
 }
-static int __ELEVATOR_Check79 [] = {1,1,19,1,10};
-static void __ELEVATOR_A80 () {
-__ELEVATOR_V21 = _true;
-}
-static int __ELEVATOR_Check80 [] = {1,0,1,21};
+static int __ELEVATOR_Check80 [] = {1,1,19,1,10};
 static void __ELEVATOR_A81 () {
-__ELEVATOR_V21 = _false;
+__ELEVATOR_V21 = _true;
 }
 static int __ELEVATOR_Check81 [] = {1,0,1,21};
 static void __ELEVATOR_A82 () {
+__ELEVATOR_V21 = _false;
+}
+static int __ELEVATOR_Check82 [] = {1,0,1,21};
+static void __ELEVATOR_A83 () {
 __ELEVATOR_V22 = _true;
 }
-static int __ELEVATOR_Check82 [] = {1,0,1,22};
-static void __ELEVATOR_A83 () {
+static int __ELEVATOR_Check83 [] = {1,0,1,22};
+static void __ELEVATOR_A84 () {
 __ELEVATOR_V20 = __ELEVATOR_V11-__ELEVATOR_V19;
 }
-static int __ELEVATOR_Check83 [] = {1,2,11,19,1,20};
-static void __ELEVATOR_A84 () {
+static int __ELEVATOR_Check84 [] = {1,2,11,19,1,20};
+static void __ELEVATOR_A85 () {
 __ELEVATOR_V24 = __ELEVATOR_V20;
 }
-static int __ELEVATOR_Check84 [] = {1,1,20,1,24};
-static void __ELEVATOR_A85 () {
+static int __ELEVATOR_Check85 [] = {1,1,20,1,24};
+static void __ELEVATOR_A86 () {
 __ELEVATOR_V19 = __ELEVATOR_V19+1;
 }
-static int __ELEVATOR_Check85 [] = {1,1,19,1,19};
-static void __ELEVATOR_A86 () {
+static int __ELEVATOR_Check86 [] = {1,1,19,1,19};
+static void __ELEVATOR_A87 () {
 __ELEVATOR_V10 = __ELEVATOR_V19;
 }
-static int __ELEVATOR_Check86 [] = {1,1,19,1,10};
-static void __ELEVATOR_A87 () {
-__ELEVATOR_V21 = _true;
-}
-static int __ELEVATOR_Check87 [] = {1,0,1,21};
+static int __ELEVATOR_Check87 [] = {1,1,19,1,10};
 static void __ELEVATOR_A88 () {
-__ELEVATOR_V21 = _false;
+__ELEVATOR_V21 = _true;
 }
 static int __ELEVATOR_Check88 [] = {1,0,1,21};
 static void __ELEVATOR_A89 () {
-__ELEVATOR_V21 = _true;
+__ELEVATOR_V21 = _false;
 }
 static int __ELEVATOR_Check89 [] = {1,0,1,21};
 static void __ELEVATOR_A90 () {
-__ELEVATOR_V21 = _false;
+__ELEVATOR_V21 = _true;
 }
 static int __ELEVATOR_Check90 [] = {1,0,1,21};
 static void __ELEVATOR_A91 () {
+__ELEVATOR_V21 = _false;
+}
+static int __ELEVATOR_Check91 [] = {1,0,1,21};
+static void __ELEVATOR_A92 () {
 __ELEVATOR_V25 = 2-1;
 }
-static int __ELEVATOR_Check91 [] = {1,0,1,25};
-static void __ELEVATOR_A92 () {
+static int __ELEVATOR_Check92 [] = {1,0,1,25};
+static void __ELEVATOR_A93 () {
 __ELEVATOR_V26 = 0;
 }
-static int __ELEVATOR_Check92 [] = {1,0,1,26};
-static void __ELEVATOR_A93 () {
+static int __ELEVATOR_Check93 [] = {1,0,1,26};
+static void __ELEVATOR_A94 () {
 __ELEVATOR_V27 = 2-1;
 }
-static int __ELEVATOR_Check93 [] = {1,0,1,27};
-static void __ELEVATOR_A94 () {
+static int __ELEVATOR_Check94 [] = {1,0,1,27};
+static void __ELEVATOR_A95 () {
 __ELEVATOR_V28 = 0;
 }
-static int __ELEVATOR_Check94 [] = {1,0,1,28};
-static void __ELEVATOR_A95 () {
+static int __ELEVATOR_Check95 [] = {1,0,1,28};
+static void __ELEVATOR_A96 () {
 __ELEVATOR_V29 = 0;
 }
-static int __ELEVATOR_Check95 [] = {1,0,1,29};
+static int __ELEVATOR_Check96 [] = {1,0,1,29};
 
 /* PROCEDURE CALLS */
 
 /* CONDITIONS */
 
-static int __ELEVATOR_A96 () {
+static int __ELEVATOR_A97 () {
 __ELEVATOR_GENERIC_TEST(__ELEVATOR_V10==1);
 }
-static int __ELEVATOR_Check96 [] = {1,1,10,0};
-static int __ELEVATOR_A97 () {
+static int __ELEVATOR_Check97 [] = {1,1,10,0};
+static int __ELEVATOR_A98 () {
 __ELEVATOR_GENERIC_TEST(__ELEVATOR_V12);
 }
-static int __ELEVATOR_Check97 [] = {1,1,12,0};
-static int __ELEVATOR_A98 () {
+static int __ELEVATOR_Check98 [] = {1,1,12,0};
+static int __ELEVATOR_A99 () {
 __ELEVATOR_GENERIC_TEST(__ELEVATOR_V10==2);
 }
-static int __ELEVATOR_Check98 [] = {1,1,10,0};
-static int __ELEVATOR_A99 () {
+static int __ELEVATOR_Check99 [] = {1,1,10,0};
+static int __ELEVATOR_A100 () {
 __ELEVATOR_GENERIC_TEST(__ELEVATOR_V13);
 }
-static int __ELEVATOR_Check99 [] = {1,1,13,0};
-static int __ELEVATOR_A100 () {
+static int __ELEVATOR_Check100 [] = {1,1,13,0};
+static int __ELEVATOR_A101 () {
 __ELEVATOR_GENERIC_TEST(__ELEVATOR_V10==3);
 }
-static int __ELEVATOR_Check100 [] = {1,1,10,0};
-static int __ELEVATOR_A101 () {
+static int __ELEVATOR_Check101 [] = {1,1,10,0};
+static int __ELEVATOR_A102 () {
 __ELEVATOR_GENERIC_TEST(__ELEVATOR_V14);
 }
-static int __ELEVATOR_Check101 [] = {1,1,14,0};
-static int __ELEVATOR_A102 () {
+static int __ELEVATOR_Check102 [] = {1,1,14,0};
+static int __ELEVATOR_A103 () {
 __ELEVATOR_GENERIC_TEST(__ELEVATOR_V10==4);
 }
-static int __ELEVATOR_Check102 [] = {1,1,10,0};
-static int __ELEVATOR_A103 () {
+static int __ELEVATOR_Check103 [] = {1,1,10,0};
+static int __ELEVATOR_A104 () {
 __ELEVATOR_GENERIC_TEST(__ELEVATOR_V15);
 }
-static int __ELEVATOR_Check103 [] = {1,1,15,0};
-static int __ELEVATOR_A104 () {
+static int __ELEVATOR_Check104 [] = {1,1,15,0};
+static int __ELEVATOR_A105 () {
 __ELEVATOR_GENERIC_TEST(__ELEVATOR_V10==__ELEVATOR_V18);
 }
-static int __ELEVATOR_Check104 [] = {1,2,10,18,0};
-static int __ELEVATOR_A105 () {
+static int __ELEVATOR_Check105 [] = {1,2,10,18,0};
+static int __ELEVATOR_A106 () {
 __ELEVATOR_GENERIC_TEST(__ELEVATOR_V16&&(__ELEVATOR_V12||__ELEVATOR_V13||__ELEVATOR_V14||__ELEVATOR_V15));
 }
-static int __ELEVATOR_Check105 [] = {1,5,16,12,13,14,15,0};
-static int __ELEVATOR_A106 () {
+static int __ELEVATOR_Check106 [] = {1,5,16,12,13,14,15,0};
+static int __ELEVATOR_A107 () {
 __ELEVATOR_GENERIC_TEST(__ELEVATOR_V17);
 }
-static int __ELEVATOR_Check106 [] = {1,1,17,0};
-static int __ELEVATOR_A107 () {
+static int __ELEVATOR_Check107 [] = {1,1,17,0};
+static int __ELEVATOR_A108 () {
 __ELEVATOR_GENERIC_TEST(__ELEVATOR_V15&&(__ELEVATOR_V18<4));
 }
-static int __ELEVATOR_Check107 [] = {1,2,15,18,0};
-static int __ELEVATOR_A108 () {
+static int __ELEVATOR_Check108 [] = {1,2,15,18,0};
+static int __ELEVATOR_A109 () {
 __ELEVATOR_GENERIC_TEST(__ELEVATOR_V14&&(__ELEVATOR_V18<3));
 }
-static int __ELEVATOR_Check108 [] = {1,2,14,18,0};
-static int __ELEVATOR_A109 () {
+static int __ELEVATOR_Check109 [] = {1,2,14,18,0};
+static int __ELEVATOR_A110 () {
 __ELEVATOR_GENERIC_TEST(__ELEVATOR_V12);
 }
-static int __ELEVATOR_Check109 [] = {1,1,12,0};
-static int __ELEVATOR_A110 () {
+static int __ELEVATOR_Check110 [] = {1,1,12,0};
+static int __ELEVATOR_A111 () {
 __ELEVATOR_GENERIC_TEST(__ELEVATOR_V13);
 }
-static int __ELEVATOR_Check110 [] = {1,1,13,0};
-static int __ELEVATOR_A111 () {
+static int __ELEVATOR_Check111 [] = {1,1,13,0};
+static int __ELEVATOR_A112 () {
 __ELEVATOR_GENERIC_TEST(__ELEVATOR_V14);
 }
-static int __ELEVATOR_Check111 [] = {1,1,14,0};
-static int __ELEVATOR_A112 () {
+static int __ELEVATOR_Check112 [] = {1,1,14,0};
+static int __ELEVATOR_A113 () {
 __ELEVATOR_GENERIC_TEST(__ELEVATOR_V12&&(__ELEVATOR_V18>1));
 }
-static int __ELEVATOR_Check112 [] = {1,2,12,18,0};
-static int __ELEVATOR_A113 () {
+static int __ELEVATOR_Check113 [] = {1,2,12,18,0};
+static int __ELEVATOR_A114 () {
 __ELEVATOR_GENERIC_TEST(__ELEVATOR_V13&&(__ELEVATOR_V18>2));
 }
-static int __ELEVATOR_Check113 [] = {1,2,13,18,0};
-static int __ELEVATOR_A114 () {
+static int __ELEVATOR_Check114 [] = {1,2,13,18,0};
+static int __ELEVATOR_A115 () {
 __ELEVATOR_GENERIC_TEST(__ELEVATOR_V15);
 }
-static int __ELEVATOR_Check114 [] = {1,1,15,0};
-static int __ELEVATOR_A115 () {
+static int __ELEVATOR_Check115 [] = {1,1,15,0};
+static int __ELEVATOR_A116 () {
 __ELEVATOR_GENERIC_TEST(__ELEVATOR_V13);
 }
-static int __ELEVATOR_Check115 [] = {1,1,13,0};
-static int __ELEVATOR_A116 () {
+static int __ELEVATOR_Check116 [] = {1,1,13,0};
+static int __ELEVATOR_A117 () {
 __ELEVATOR_GENERIC_TEST(__ELEVATOR_V14);
 }
-static int __ELEVATOR_Check116 [] = {1,1,14,0};
-static int __ELEVATOR_A117 () {
+static int __ELEVATOR_Check117 [] = {1,1,14,0};
+static int __ELEVATOR_A118 () {
 __ELEVATOR_GENERIC_TEST(__ELEVATOR_V19==__ELEVATOR_V11);
 }
-static int __ELEVATOR_Check117 [] = {1,2,19,11,0};
-static int __ELEVATOR_A118 () {
-__ELEVATOR_GENERIC_TEST(__ELEVATOR_V21==_false);
-}
-static int __ELEVATOR_Check118 [] = {1,1,21,0};
+static int __ELEVATOR_Check118 [] = {1,2,19,11,0};
 static int __ELEVATOR_A119 () {
-__ELEVATOR_GENERIC_TEST(__ELEVATOR_V21==_true);
+__ELEVATOR_GENERIC_TEST(__ELEVATOR_V21==_false);
 }
 static int __ELEVATOR_Check119 [] = {1,1,21,0};
 static int __ELEVATOR_A120 () {
+__ELEVATOR_GENERIC_TEST(__ELEVATOR_V21==_true);
+}
+static int __ELEVATOR_Check120 [] = {1,1,21,0};
+static int __ELEVATOR_A121 () {
 __ELEVATOR_GENERIC_TEST(__ELEVATOR_V19>__ELEVATOR_V11);
 }
-static int __ELEVATOR_Check120 [] = {1,2,19,11,0};
-static int __ELEVATOR_A121 () {
+static int __ELEVATOR_Check121 [] = {1,2,19,11,0};
+static int __ELEVATOR_A122 () {
 __ELEVATOR_GENERIC_TEST(__ELEVATOR_V23>0);
 }
-static int __ELEVATOR_Check121 [] = {1,1,23,0};
-static int __ELEVATOR_A122 () {
+static int __ELEVATOR_Check122 [] = {1,1,23,0};
+static int __ELEVATOR_A123 () {
 __ELEVATOR_GENERIC_TEST(__ELEVATOR_V24>0);
 }
-static int __ELEVATOR_Check122 [] = {1,1,24,0};
-static int __ELEVATOR_A123 () {
+static int __ELEVATOR_Check123 [] = {1,1,24,0};
+static int __ELEVATOR_A124 () {
 __ELEVATOR_GENERIC_TEST(__ELEVATOR_V21==_false);
 }
-static int __ELEVATOR_Check123 [] = {1,1,21,0};
-static int __ELEVATOR_A124 () {
+static int __ELEVATOR_Check124 [] = {1,1,21,0};
+static int __ELEVATOR_A125 () {
 __ELEVATOR_GENERIC_TEST(__ELEVATOR_V25>0);
 }
-static int __ELEVATOR_Check124 [] = {1,1,25,0};
-static int __ELEVATOR_A125 () {
+static int __ELEVATOR_Check125 [] = {1,1,25,0};
+static int __ELEVATOR_A126 () {
 __ELEVATOR_GENERIC_TEST(__ELEVATOR_V26>0);
 }
-static int __ELEVATOR_Check125 [] = {1,1,26,0};
-static int __ELEVATOR_A126 () {
+static int __ELEVATOR_Check126 [] = {1,1,26,0};
+static int __ELEVATOR_A127 () {
 __ELEVATOR_GENERIC_TEST(__ELEVATOR_V27>0);
 }
-static int __ELEVATOR_Check126 [] = {1,1,27,0};
-static int __ELEVATOR_A127 () {
+static int __ELEVATOR_Check127 [] = {1,1,27,0};
+static int __ELEVATOR_A128 () {
 __ELEVATOR_GENERIC_TEST(__ELEVATOR_V28>0);
 }
-static int __ELEVATOR_Check127 [] = {1,1,28,0};
-static int __ELEVATOR_A128 () {
+static int __ELEVATOR_Check128 [] = {1,1,28,0};
+static int __ELEVATOR_A129 () {
 __ELEVATOR_GENERIC_TEST(__ELEVATOR_V29>0);
 }
-static int __ELEVATOR_Check128 [] = {1,1,29,0};
+static int __ELEVATOR_Check129 [] = {1,1,29,0};
 
 /* DECREMENTS */
 
-static int __ELEVATOR_A129 () {
+static int __ELEVATOR_A130 () {
 __ELEVATOR_GENERIC_TEST(__DSZ(__ELEVATOR_V23));
 }
-static int __ELEVATOR_Check129 [] = {1,1,23,1,23};
-static int __ELEVATOR_A130 () {
+static int __ELEVATOR_Check130 [] = {1,1,23,1,23};
+static int __ELEVATOR_A131 () {
 __ELEVATOR_GENERIC_TEST(__DSZ(__ELEVATOR_V24));
 }
-static int __ELEVATOR_Check130 [] = {1,1,24,1,24};
-static int __ELEVATOR_A131 () {
+static int __ELEVATOR_Check131 [] = {1,1,24,1,24};
+static int __ELEVATOR_A132 () {
 __ELEVATOR_GENERIC_TEST(__DSZ(__ELEVATOR_V25));
 }
-static int __ELEVATOR_Check131 [] = {1,1,25,1,25};
-static int __ELEVATOR_A132 () {
+static int __ELEVATOR_Check132 [] = {1,1,25,1,25};
+static int __ELEVATOR_A133 () {
 __ELEVATOR_GENERIC_TEST(__DSZ(__ELEVATOR_V26));
 }
-static int __ELEVATOR_Check132 [] = {1,1,26,1,26};
-static int __ELEVATOR_A133 () {
+static int __ELEVATOR_Check133 [] = {1,1,26,1,26};
+static int __ELEVATOR_A134 () {
 __ELEVATOR_GENERIC_TEST(__DSZ(__ELEVATOR_V27));
 }
-static int __ELEVATOR_Check133 [] = {1,1,27,1,27};
-static int __ELEVATOR_A134 () {
+static int __ELEVATOR_Check134 [] = {1,1,27,1,27};
+static int __ELEVATOR_A135 () {
 __ELEVATOR_GENERIC_TEST(__DSZ(__ELEVATOR_V28));
 }
-static int __ELEVATOR_Check134 [] = {1,1,28,1,28};
-static int __ELEVATOR_A135 () {
+static int __ELEVATOR_Check135 [] = {1,1,28,1,28};
+static int __ELEVATOR_A136 () {
 __ELEVATOR_GENERIC_TEST(__DSZ(__ELEVATOR_V29));
 }
-static int __ELEVATOR_Check135 [] = {1,1,29,1,29};
+static int __ELEVATOR_Check136 [] = {1,1,29,1,29};
 
 /* START ACTIONS */
 
@@ -972,21 +979,21 @@ static int __ELEVATOR_Check135 [] = {1,1,29,1,29};
 
 /* RESET ACTIONS */
 
-static void __ELEVATOR_A136 () {
-;
-__ResetVariable(10);
-}
-static int __ELEVATOR_Check136 [] = {1,0,0};
 static void __ELEVATOR_A137 () {
 ;
-__ResetVariable(11);
+__ResetVariable(10);
 }
 static int __ELEVATOR_Check137 [] = {1,0,0};
 static void __ELEVATOR_A138 () {
 ;
-__ResetVariable(20);
+__ResetVariable(11);
 }
 static int __ELEVATOR_Check138 [] = {1,0,0};
+static void __ELEVATOR_A139 () {
+;
+__ResetVariable(20);
+}
+static int __ELEVATOR_Check139 [] = {1,0,0};
 
 /* ACTION SEQUENCES */
 
@@ -1130,7 +1137,8 @@ __ELEVATOR_Check134,
 __ELEVATOR_Check135,
 __ELEVATOR_Check136,
 __ELEVATOR_Check137,
-__ELEVATOR_Check138
+__ELEVATOR_Check138,
+__ELEVATOR_Check139
 };
 static int **__ELEVATOR_PCheckArray =  __ELEVATOR_CheckArray;
 
@@ -1169,7 +1177,7 @@ return 0;
 
 struct __InstanceEntry __ELEVATOR_InstanceTable [] = {
 {"ELEVATOR",0,"./src/strl","elevator.strl",{1,1,1,0},{1,23,1,0},{0,0,0,0}},
-{"BUTTONS",0,"./src/strl","buttons.strl",{1,1,1,1},{1,112,1,1},{1,15,9,0}},
+{"BUTTONS",0,"./src/strl","buttons.strl",{1,1,1,1},{1,127,1,1},{1,15,9,0}},
 {"CABIN",0,"./src/strl","cabin.strl",{1,1,1,2},{1,76,1,2},{1,19,9,0}},
 {"OpenDoor",2,"./src/strl","tools.strl",{1,1,1,3},{1,9,1,3},{1,17,21,2}},
 {"CloseDoor",2,"./src/strl","tools.strl",{1,12,1,4},{1,20,1,4},{1,24,21,2}},
@@ -1197,15 +1205,16 @@ struct __SignalEntry __ELEVATOR_SignalTable [] = {
 {"GOF3",33,0,0,{1,4,23,0},0,(void*) NULL,0,(void*) NULL,0,(void*) NULL},
 {"GOF4",33,0,0,{1,4,29,0},0,(void*) NULL,0,(void*) NULL,0,(void*) NULL},
 {"OPENDOOR",33,0,0,{1,5,11,0},0,(void*) NULL,0,(void*) NULL,0,(void*) NULL},
-{"DOOR_OPENED",34,0,0,{1,8,12,0},0,(void*) NULL,0,(void*) NULL,0,(void*) NULL},
-{"DOOR_CLOSED",34,0,0,{1,8,25,0},0,(void*) NULL,0,(void*) NULL,0,(void*) NULL},
+{"DOOROPENED",34,0,0,{1,8,12,0},0,(void*) NULL,0,(void*) NULL,0,(void*) NULL},
+{"DOORCLOSED",34,0,0,{1,8,24,0},0,(void*) NULL,0,(void*) NULL,0,(void*) NULL},
 {"CURRENTFLOOR",2,10,0,{1,9,12,0},0,(void*) NULL,0,(void*) NULL,0,(void*) NULL},
 {"WRONG",34,0,0,{1,10,12,0},0,(void*) NULL,0,(void*) NULL,0,(void*) NULL},
 {"STOP",34,0,0,{1,10,19,0},0,(void*) NULL,0,(void*) NULL,0,(void*) NULL},
-{"F1",34,0,0,{1,11,12,0},0,(void*) NULL,0,(void*) NULL,0,(void*) NULL},
-{"F2",34,0,0,{1,11,16,0},0,(void*) NULL,0,(void*) NULL,0,(void*) NULL},
-{"F3",34,0,0,{1,11,20,0},0,(void*) NULL,0,(void*) NULL,0,(void*) NULL},
-{"F4",34,0,0,{1,11,24,0},0,(void*) NULL,0,(void*) NULL,0,(void*) NULL},
+{"LF1",34,0,0,{1,11,12,0},0,(void*) NULL,0,(void*) NULL,0,(void*) NULL},
+{"LF2",34,0,0,{1,11,17,0},0,(void*) NULL,0,(void*) NULL,0,(void*) NULL},
+{"LF3",34,0,0,{1,11,22,0},0,(void*) NULL,0,(void*) NULL,0,(void*) NULL},
+{"LF4",34,0,0,{1,11,27,0},0,(void*) NULL,0,(void*) NULL,0,(void*) NULL},
+{"LOUT",34,0,0,{1,11,32,0},0,(void*) NULL,0,(void*) NULL,0,(void*) NULL},
 {"TARGET",8,11,0,{1,13,12,0},0,(void*) NULL,0,(void*) NULL,0,(void*) NULL}};
 
 struct __InputEntry __ELEVATOR_InputTable [] = {
@@ -1255,7 +1264,7 @@ struct __VariableEntry __ELEVATOR_VariableTable [] = {
 
 struct __HaltEntry __ELEVATOR_HaltTable [] = {
 {{1,23,1,0}},
-{{1,108,9,1}},
+{{1,123,9,1}},
 {{1,13,6,2}},
 {{1,72,9,2}},
 {{1,5,5,3}},
@@ -1305,7 +1314,7 @@ int ELEVATOR_reset();
 
 static struct __ModuleEntry __ELEVATOR_ModuleData = {
 "Simulation interface release 5","ELEVATOR",
-16,0,20,10,0,0,9,1,0,0,0,30,0,27,0,0,0,
+16,0,21,10,0,0,10,1,0,0,0,30,0,27,0,0,0,
 __ELEVATOR_HaltList,
 __ELEVATOR_AwaitedList,
 __ELEVATOR_EmittedList,
@@ -1366,7 +1375,7 @@ static __SSC_BIT_TYPE __ELEVATOR_R[27] = {_true,
 int ELEVATOR () {
 /* AUXILIARY VARIABLES */
 
-static __SSC_BIT_TYPE E[72];
+static __SSC_BIT_TYPE E[77];
 
 __ELEVATOR_ModuleData.awaited_list = __ELEVATOR_AwaitedList;
 __ResetModuleEntryBeforeReaction();
@@ -1437,21 +1446,9 @@ fprintf(stderr, "__ELEVATOR_A12\n");
 #endif
 }
 if (__ELEVATOR_R[0]) {
-__CheckVariables(__ELEVATOR_CheckArray[136]);__ELEVATOR_A136();
-#ifdef TRACE_ACTION
-fprintf(stderr, "__ELEVATOR_A136\n");
-#endif
-}
-if (__ELEVATOR_R[0]) {
 __CheckVariables(__ELEVATOR_CheckArray[137]);__ELEVATOR_A137();
 #ifdef TRACE_ACTION
 fprintf(stderr, "__ELEVATOR_A137\n");
-#endif
-}
-if (__ELEVATOR_R[0]) {
-__CheckVariables(__ELEVATOR_CheckArray[69]);__ELEVATOR_A69();
-#ifdef TRACE_ACTION
-fprintf(stderr, "__ELEVATOR_A69\n");
 #endif
 }
 if (__ELEVATOR_R[0]) {
@@ -1467,6 +1464,12 @@ fprintf(stderr, "__ELEVATOR_A70\n");
 #endif
 }
 if (__ELEVATOR_R[0]) {
+__CheckVariables(__ELEVATOR_CheckArray[139]);__ELEVATOR_A139();
+#ifdef TRACE_ACTION
+fprintf(stderr, "__ELEVATOR_A139\n");
+#endif
+}
+if (__ELEVATOR_R[0]) {
 __CheckVariables(__ELEVATOR_CheckArray[71]);__ELEVATOR_A71();
 #ifdef TRACE_ACTION
 fprintf(stderr, "__ELEVATOR_A71\n");
@@ -1478,17 +1481,23 @@ __CheckVariables(__ELEVATOR_CheckArray[72]);__ELEVATOR_A72();
 fprintf(stderr, "__ELEVATOR_A72\n");
 #endif
 }
+if (__ELEVATOR_R[0]) {
+__CheckVariables(__ELEVATOR_CheckArray[73]);__ELEVATOR_A73();
+#ifdef TRACE_ACTION
+fprintf(stderr, "__ELEVATOR_A73\n");
+#endif
+}
 E[16] = __ELEVATOR_R[9]&&!(__ELEVATOR_R[0]);
 E[17] = E[16]&&(__CheckVariables(__ELEVATOR_CheckArray[1]),
 #ifdef TRACE_ACTION
 fprintf(stderr, "test 1\n"),
 #endif
 __ELEVATOR_A1());
-E[18] = E[17]&&(__CheckVariables(__ELEVATOR_CheckArray[131]),
+E[18] = E[17]&&(__CheckVariables(__ELEVATOR_CheckArray[132]),
 #ifdef TRACE_ACTION
-fprintf(stderr, "test 131\n"),
+fprintf(stderr, "test 132\n"),
 #endif
-__ELEVATOR_A131());
+__ELEVATOR_A132());
 E[19] = __ELEVATOR_R[8]&&!(__ELEVATOR_R[0]);
 E[20] = E[19]&&(__CheckVariables(__ELEVATOR_CheckArray[1]),
 #ifdef TRACE_ACTION
@@ -1496,27 +1505,27 @@ fprintf(stderr, "test 1\n"),
 #endif
 __ELEVATOR_A1());
 if (E[20]) {
-__CheckVariables(__ELEVATOR_CheckArray[91]);__ELEVATOR_A91();
+__CheckVariables(__ELEVATOR_CheckArray[92]);__ELEVATOR_A92();
 #ifdef TRACE_ACTION
-fprintf(stderr, "__ELEVATOR_A91\n");
+fprintf(stderr, "__ELEVATOR_A92\n");
 #endif
 }
-E[21] = E[20]&&(__CheckVariables(__ELEVATOR_CheckArray[124]),
+E[21] = E[20]&&(__CheckVariables(__ELEVATOR_CheckArray[125]),
 #ifdef TRACE_ACTION
-fprintf(stderr, "test 124\n"),
+fprintf(stderr, "test 125\n"),
 #endif
-__ELEVATOR_A124());
+__ELEVATOR_A125());
 E[22] = E[18]||(E[20]&&!(E[21]));
-if (E[22]) {
-__CheckVariables(__ELEVATOR_CheckArray[78]);__ELEVATOR_A78();
-#ifdef TRACE_ACTION
-fprintf(stderr, "__ELEVATOR_A78\n");
-#endif
-}
 if (E[22]) {
 __CheckVariables(__ELEVATOR_CheckArray[79]);__ELEVATOR_A79();
 #ifdef TRACE_ACTION
 fprintf(stderr, "__ELEVATOR_A79\n");
+#endif
+}
+if (E[22]) {
+__CheckVariables(__ELEVATOR_CheckArray[80]);__ELEVATOR_A80();
+#ifdef TRACE_ACTION
+fprintf(stderr, "__ELEVATOR_A80\n");
 #endif
 }
 E[23] = __ELEVATOR_R[16]&&!(__ELEVATOR_R[0]);
@@ -1525,11 +1534,11 @@ E[24] = E[23]&&(__CheckVariables(__ELEVATOR_CheckArray[1]),
 fprintf(stderr, "test 1\n"),
 #endif
 __ELEVATOR_A1());
-E[25] = E[24]&&(__CheckVariables(__ELEVATOR_CheckArray[133]),
+E[25] = E[24]&&(__CheckVariables(__ELEVATOR_CheckArray[134]),
 #ifdef TRACE_ACTION
-fprintf(stderr, "test 133\n"),
+fprintf(stderr, "test 134\n"),
 #endif
-__ELEVATOR_A133());
+__ELEVATOR_A134());
 E[26] = __ELEVATOR_R[15]&&!(__ELEVATOR_R[0]);
 E[27] = E[26]&&(__CheckVariables(__ELEVATOR_CheckArray[1]),
 #ifdef TRACE_ACTION
@@ -1537,27 +1546,27 @@ fprintf(stderr, "test 1\n"),
 #endif
 __ELEVATOR_A1());
 if (E[27]) {
-__CheckVariables(__ELEVATOR_CheckArray[93]);__ELEVATOR_A93();
+__CheckVariables(__ELEVATOR_CheckArray[94]);__ELEVATOR_A94();
 #ifdef TRACE_ACTION
-fprintf(stderr, "__ELEVATOR_A93\n");
+fprintf(stderr, "__ELEVATOR_A94\n");
 #endif
 }
-E[28] = E[27]&&(__CheckVariables(__ELEVATOR_CheckArray[126]),
+E[28] = E[27]&&(__CheckVariables(__ELEVATOR_CheckArray[127]),
 #ifdef TRACE_ACTION
-fprintf(stderr, "test 126\n"),
+fprintf(stderr, "test 127\n"),
 #endif
-__ELEVATOR_A126());
+__ELEVATOR_A127());
 E[29] = E[25]||(E[27]&&!(E[28]));
-if (E[29]) {
-__CheckVariables(__ELEVATOR_CheckArray[85]);__ELEVATOR_A85();
-#ifdef TRACE_ACTION
-fprintf(stderr, "__ELEVATOR_A85\n");
-#endif
-}
 if (E[29]) {
 __CheckVariables(__ELEVATOR_CheckArray[86]);__ELEVATOR_A86();
 #ifdef TRACE_ACTION
 fprintf(stderr, "__ELEVATOR_A86\n");
+#endif
+}
+if (E[29]) {
+__CheckVariables(__ELEVATOR_CheckArray[87]);__ELEVATOR_A87();
+#ifdef TRACE_ACTION
+fprintf(stderr, "__ELEVATOR_A87\n");
 #endif
 }
 E[30] = __ELEVATOR_R[0]||E[22]||E[29];
@@ -1568,12 +1577,6 @@ if (E[30]) {
 __CheckVariables(__ELEVATOR_CheckArray[13]);__ELEVATOR_A13();
 #ifdef TRACE_ACTION
 fprintf(stderr, "__ELEVATOR_A13\n");
-#endif
-}
-if (__ELEVATOR_R[0]) {
-__CheckVariables(__ELEVATOR_CheckArray[30]);__ELEVATOR_A30();
-#ifdef TRACE_ACTION
-fprintf(stderr, "__ELEVATOR_A30\n");
 #endif
 }
 if (__ELEVATOR_R[0]) {
@@ -1612,6 +1615,12 @@ __CheckVariables(__ELEVATOR_CheckArray[36]);__ELEVATOR_A36();
 fprintf(stderr, "__ELEVATOR_A36\n");
 #endif
 }
+if (__ELEVATOR_R[0]) {
+__CheckVariables(__ELEVATOR_CheckArray[37]);__ELEVATOR_A37();
+#ifdef TRACE_ACTION
+fprintf(stderr, "__ELEVATOR_A37\n");
+#endif
+}
 E[31] = (__ELEVATOR_R[1]&&!(__ELEVATOR_R[0]))||__ELEVATOR_R[0];
 E[32] = (__CheckVariables(__ELEVATOR_CheckArray[2]),
 #ifdef TRACE_ACTION
@@ -1624,15 +1633,22 @@ fprintf(stderr, "test 6\n"),
 __ELEVATOR_A6());
 E[33] = E[31]&&E[32];
 if (E[33]) {
-__AppendToList(__ELEVATOR_EmittedList,15);
-}
-if (E[33]) {
-__CheckVariables(__ELEVATOR_CheckArray[37]);__ELEVATOR_A37();
+__CheckVariables(__ELEVATOR_CheckArray[38]);__ELEVATOR_A38();
 #ifdef TRACE_ACTION
-fprintf(stderr, "__ELEVATOR_A37\n");
+fprintf(stderr, "__ELEVATOR_A38\n");
 #endif
 }
-E[32] = E[33]||(E[31]&&!(E[32]));
+E[34] = E[33]&&(__CheckVariables(__ELEVATOR_CheckArray[6]),
+#ifdef TRACE_ACTION
+fprintf(stderr, "test 6\n"),
+#endif
+__ELEVATOR_A6());
+E[35] = E[33]&&!((__CheckVariables(__ELEVATOR_CheckArray[6]),
+#ifdef TRACE_ACTION
+fprintf(stderr, "test 6\n"),
+#endif
+__ELEVATOR_A6()));
+E[32] = E[34]||E[35]||(E[31]&&!(E[32]));
 E[31] = (__CheckVariables(__ELEVATOR_CheckArray[3]),
 #ifdef TRACE_ACTION
 fprintf(stderr, "test 3\n"),
@@ -1642,17 +1658,24 @@ __ELEVATOR_A3())||(__CheckVariables(__ELEVATOR_CheckArray[7]),
 fprintf(stderr, "test 7\n"),
 #endif
 __ELEVATOR_A7());
-E[34] = E[32]&&E[31];
-if (E[34]) {
-__AppendToList(__ELEVATOR_EmittedList,16);
-}
-if (E[34]) {
-__CheckVariables(__ELEVATOR_CheckArray[38]);__ELEVATOR_A38();
+E[35] = E[32]&&E[31];
+if (E[35]) {
+__CheckVariables(__ELEVATOR_CheckArray[39]);__ELEVATOR_A39();
 #ifdef TRACE_ACTION
-fprintf(stderr, "__ELEVATOR_A38\n");
+fprintf(stderr, "__ELEVATOR_A39\n");
 #endif
 }
-E[31] = E[34]||(E[32]&&!(E[31]));
+E[36] = E[35]&&(__CheckVariables(__ELEVATOR_CheckArray[7]),
+#ifdef TRACE_ACTION
+fprintf(stderr, "test 7\n"),
+#endif
+__ELEVATOR_A7());
+E[37] = E[35]&&!((__CheckVariables(__ELEVATOR_CheckArray[7]),
+#ifdef TRACE_ACTION
+fprintf(stderr, "test 7\n"),
+#endif
+__ELEVATOR_A7()));
+E[31] = E[36]||E[37]||(E[32]&&!(E[31]));
 E[32] = (__CheckVariables(__ELEVATOR_CheckArray[4]),
 #ifdef TRACE_ACTION
 fprintf(stderr, "test 4\n"),
@@ -1662,17 +1685,24 @@ __ELEVATOR_A4())||(__CheckVariables(__ELEVATOR_CheckArray[8]),
 fprintf(stderr, "test 8\n"),
 #endif
 __ELEVATOR_A8());
-E[35] = E[31]&&E[32];
-if (E[35]) {
-__AppendToList(__ELEVATOR_EmittedList,17);
-}
-if (E[35]) {
-__CheckVariables(__ELEVATOR_CheckArray[39]);__ELEVATOR_A39();
+E[37] = E[31]&&E[32];
+if (E[37]) {
+__CheckVariables(__ELEVATOR_CheckArray[40]);__ELEVATOR_A40();
 #ifdef TRACE_ACTION
-fprintf(stderr, "__ELEVATOR_A39\n");
+fprintf(stderr, "__ELEVATOR_A40\n");
 #endif
 }
-E[32] = E[35]||(E[31]&&!(E[32]));
+E[38] = E[37]&&(__CheckVariables(__ELEVATOR_CheckArray[8]),
+#ifdef TRACE_ACTION
+fprintf(stderr, "test 8\n"),
+#endif
+__ELEVATOR_A8());
+E[39] = E[37]&&!((__CheckVariables(__ELEVATOR_CheckArray[8]),
+#ifdef TRACE_ACTION
+fprintf(stderr, "test 8\n"),
+#endif
+__ELEVATOR_A8()));
+E[32] = E[38]||E[39]||(E[31]&&!(E[32]));
 E[31] = (__CheckVariables(__ELEVATOR_CheckArray[5]),
 #ifdef TRACE_ACTION
 fprintf(stderr, "test 5\n"),
@@ -1682,42 +1712,49 @@ __ELEVATOR_A5())||(__CheckVariables(__ELEVATOR_CheckArray[9]),
 fprintf(stderr, "test 9\n"),
 #endif
 __ELEVATOR_A9());
-E[36] = E[32]&&E[31];
-if (E[36]) {
-__AppendToList(__ELEVATOR_EmittedList,18);
-}
-if (E[36]) {
-__CheckVariables(__ELEVATOR_CheckArray[40]);__ELEVATOR_A40();
+E[39] = E[32]&&E[31];
+if (E[39]) {
+__CheckVariables(__ELEVATOR_CheckArray[41]);__ELEVATOR_A41();
 #ifdef TRACE_ACTION
-fprintf(stderr, "__ELEVATOR_A40\n");
+fprintf(stderr, "__ELEVATOR_A41\n");
 #endif
 }
-E[31] = E[36]||(E[32]&&!(E[31]));
+E[40] = E[39]&&(__CheckVariables(__ELEVATOR_CheckArray[9]),
+#ifdef TRACE_ACTION
+fprintf(stderr, "test 9\n"),
+#endif
+__ELEVATOR_A9());
+E[41] = E[39]&&!((__CheckVariables(__ELEVATOR_CheckArray[9]),
+#ifdef TRACE_ACTION
+fprintf(stderr, "test 9\n"),
+#endif
+__ELEVATOR_A9()));
+E[31] = E[40]||E[41]||(E[32]&&!(E[31]));
 E[32] = E[31]&&E[30];
-E[37] = E[32]&&(__CheckVariables(__ELEVATOR_CheckArray[96]),
+E[41] = E[32]&&(__CheckVariables(__ELEVATOR_CheckArray[97]),
 #ifdef TRACE_ACTION
-fprintf(stderr, "test 96\n"),
+fprintf(stderr, "test 97\n"),
 #endif
-__ELEVATOR_A96());
-E[32] = E[32]&&!(E[37]);
-E[38] = E[32]&&(__CheckVariables(__ELEVATOR_CheckArray[98]),
+__ELEVATOR_A97());
+E[32] = E[32]&&!(E[41]);
+E[42] = E[32]&&(__CheckVariables(__ELEVATOR_CheckArray[99]),
 #ifdef TRACE_ACTION
-fprintf(stderr, "test 98\n"),
+fprintf(stderr, "test 99\n"),
 #endif
-__ELEVATOR_A98());
-E[32] = E[32]&&!(E[38]);
-E[39] = E[32]&&(__CheckVariables(__ELEVATOR_CheckArray[100]),
+__ELEVATOR_A99());
+E[32] = E[32]&&!(E[42]);
+E[43] = E[32]&&(__CheckVariables(__ELEVATOR_CheckArray[101]),
 #ifdef TRACE_ACTION
-fprintf(stderr, "test 100\n"),
+fprintf(stderr, "test 101\n"),
 #endif
-__ELEVATOR_A100());
-E[32] = E[32]&&!(E[39]);
-E[40] = E[32]&&(__CheckVariables(__ELEVATOR_CheckArray[102]),
+__ELEVATOR_A101());
+E[32] = E[32]&&!(E[43]);
+E[44] = E[32]&&(__CheckVariables(__ELEVATOR_CheckArray[103]),
 #ifdef TRACE_ACTION
-fprintf(stderr, "test 102\n"),
+fprintf(stderr, "test 103\n"),
 #endif
-__ELEVATOR_A102());
-E[32] = E[32]&&!(E[40]);
+__ELEVATOR_A103());
+E[32] = E[32]&&!(E[44]);
 if (E[32]) {
 __AppendToList(__ELEVATOR_EmittedList,13);
 }
@@ -1727,338 +1764,360 @@ __CheckVariables(__ELEVATOR_CheckArray[14]);__ELEVATOR_A14();
 fprintf(stderr, "__ELEVATOR_A14\n");
 #endif
 }
-E[41] = E[37]&&(__CheckVariables(__ELEVATOR_CheckArray[97]),
+E[45] = E[41]&&(__CheckVariables(__ELEVATOR_CheckArray[98]),
 #ifdef TRACE_ACTION
-fprintf(stderr, "test 97\n"),
+fprintf(stderr, "test 98\n"),
 #endif
-__ELEVATOR_A97());
-if (E[41]) {
-__CheckVariables(__ELEVATOR_CheckArray[41]);__ELEVATOR_A41();
-#ifdef TRACE_ACTION
-fprintf(stderr, "__ELEVATOR_A41\n");
-#endif
-}
-E[42] = E[38]&&(__CheckVariables(__ELEVATOR_CheckArray[99]),
-#ifdef TRACE_ACTION
-fprintf(stderr, "test 99\n"),
-#endif
-__ELEVATOR_A99());
-if (E[42]) {
+__ELEVATOR_A98());
+if (E[45]) {
 __CheckVariables(__ELEVATOR_CheckArray[42]);__ELEVATOR_A42();
 #ifdef TRACE_ACTION
 fprintf(stderr, "__ELEVATOR_A42\n");
 #endif
 }
-E[43] = E[39]&&(__CheckVariables(__ELEVATOR_CheckArray[101]),
+E[46] = E[42]&&(__CheckVariables(__ELEVATOR_CheckArray[100]),
 #ifdef TRACE_ACTION
-fprintf(stderr, "test 101\n"),
+fprintf(stderr, "test 100\n"),
 #endif
-__ELEVATOR_A101());
-if (E[43]) {
+__ELEVATOR_A100());
+if (E[46]) {
 __CheckVariables(__ELEVATOR_CheckArray[43]);__ELEVATOR_A43();
 #ifdef TRACE_ACTION
 fprintf(stderr, "__ELEVATOR_A43\n");
 #endif
 }
-E[44] = E[40]&&(__CheckVariables(__ELEVATOR_CheckArray[103]),
+E[47] = E[43]&&(__CheckVariables(__ELEVATOR_CheckArray[102]),
 #ifdef TRACE_ACTION
-fprintf(stderr, "test 103\n"),
+fprintf(stderr, "test 102\n"),
 #endif
-__ELEVATOR_A103());
-if (E[44]) {
+__ELEVATOR_A102());
+if (E[47]) {
 __CheckVariables(__ELEVATOR_CheckArray[44]);__ELEVATOR_A44();
 #ifdef TRACE_ACTION
 fprintf(stderr, "__ELEVATOR_A44\n");
 #endif
 }
-E[45] = E[41]||E[42]||E[43]||E[44];
-if (E[45]) {
-__AppendToList(__ELEVATOR_EmittedList,14);
-}
-if (E[45]) {
-__CheckVariables(__ELEVATOR_CheckArray[15]);__ELEVATOR_A15();
-#ifdef TRACE_ACTION
-fprintf(stderr, "__ELEVATOR_A15\n");
-#endif
-}
-if (E[33]) {
-__CheckVariables(__ELEVATOR_CheckArray[16]);__ELEVATOR_A16();
-#ifdef TRACE_ACTION
-fprintf(stderr, "__ELEVATOR_A16\n");
-#endif
-}
-if (E[34]) {
-__CheckVariables(__ELEVATOR_CheckArray[17]);__ELEVATOR_A17();
-#ifdef TRACE_ACTION
-fprintf(stderr, "__ELEVATOR_A17\n");
-#endif
-}
-if (E[35]) {
-__CheckVariables(__ELEVATOR_CheckArray[18]);__ELEVATOR_A18();
-#ifdef TRACE_ACTION
-fprintf(stderr, "__ELEVATOR_A18\n");
-#endif
-}
-if (E[36]) {
-__CheckVariables(__ELEVATOR_CheckArray[19]);__ELEVATOR_A19();
-#ifdef TRACE_ACTION
-fprintf(stderr, "__ELEVATOR_A19\n");
-#endif
-}
-E[40] = E[41]||(E[37]&&!(E[41]))||E[42]||(E[38]&&!(E[42]))||E[43]||(E[39]&&!(E[43]))||E[44]||(E[40]&&!(E[44]))||E[32];
-E[39] = E[40]&&(__CheckVariables(__ELEVATOR_CheckArray[104]),
+E[48] = E[44]&&(__CheckVariables(__ELEVATOR_CheckArray[104]),
 #ifdef TRACE_ACTION
 fprintf(stderr, "test 104\n"),
 #endif
 __ELEVATOR_A104());
-if (E[39]) {
+if (E[48]) {
 __CheckVariables(__ELEVATOR_CheckArray[45]);__ELEVATOR_A45();
 #ifdef TRACE_ACTION
 fprintf(stderr, "__ELEVATOR_A45\n");
 #endif
 }
-E[31] = E[39]||(E[40]&&!(E[39]))||(E[31]&&!(E[30]));
-E[40] = E[31]&&(__CheckVariables(__ELEVATOR_CheckArray[105]),
+E[49] = E[45]||E[46]||E[47]||E[48];
+if (E[49]) {
+__AppendToList(__ELEVATOR_EmittedList,14);
+}
+if (E[49]) {
+__CheckVariables(__ELEVATOR_CheckArray[15]);__ELEVATOR_A15();
+#ifdef TRACE_ACTION
+fprintf(stderr, "__ELEVATOR_A15\n");
+#endif
+}
+if (E[34]||E[45]) {
+__AppendToList(__ELEVATOR_EmittedList,15);
+}
+if (E[34]||E[45]) {
+__CheckVariables(__ELEVATOR_CheckArray[16]);__ELEVATOR_A16();
+#ifdef TRACE_ACTION
+fprintf(stderr, "__ELEVATOR_A16\n");
+#endif
+}
+if (E[36]||E[46]) {
+__AppendToList(__ELEVATOR_EmittedList,16);
+}
+if (E[36]||E[46]) {
+__CheckVariables(__ELEVATOR_CheckArray[17]);__ELEVATOR_A17();
+#ifdef TRACE_ACTION
+fprintf(stderr, "__ELEVATOR_A17\n");
+#endif
+}
+if (E[38]||E[47]) {
+__AppendToList(__ELEVATOR_EmittedList,17);
+}
+if (E[38]||E[47]) {
+__CheckVariables(__ELEVATOR_CheckArray[18]);__ELEVATOR_A18();
+#ifdef TRACE_ACTION
+fprintf(stderr, "__ELEVATOR_A18\n");
+#endif
+}
+if (E[40]||E[48]) {
+__AppendToList(__ELEVATOR_EmittedList,18);
+}
+if (E[40]||E[48]) {
+__CheckVariables(__ELEVATOR_CheckArray[19]);__ELEVATOR_A19();
+#ifdef TRACE_ACTION
+fprintf(stderr, "__ELEVATOR_A19\n");
+#endif
+}
+E[44] = E[45]||(E[41]&&!(E[45]))||E[46]||(E[42]&&!(E[46]))||E[47]||(E[43]&&!(E[47]))||E[48]||(E[44]&&!(E[48]))||E[32];
+E[43] = E[44]&&(__CheckVariables(__ELEVATOR_CheckArray[105]),
 #ifdef TRACE_ACTION
 fprintf(stderr, "test 105\n"),
 #endif
 __ELEVATOR_A105());
-E[38] = E[40]&&(__CheckVariables(__ELEVATOR_CheckArray[106]),
-#ifdef TRACE_ACTION
-fprintf(stderr, "test 106\n"),
-#endif
-__ELEVATOR_A106());
-E[37] = E[38]&&(__CheckVariables(__ELEVATOR_CheckArray[107]),
-#ifdef TRACE_ACTION
-fprintf(stderr, "test 107\n"),
-#endif
-__ELEVATOR_A107());
-E[46] = E[38]&&!(E[37]);
-E[47] = E[46]&&(__CheckVariables(__ELEVATOR_CheckArray[108]),
-#ifdef TRACE_ACTION
-fprintf(stderr, "test 108\n"),
-#endif
-__ELEVATOR_A108());
-E[46] = E[46]&&!(E[47]);
-if (E[46]) {
-__CheckVariables(__ELEVATOR_CheckArray[50]);__ELEVATOR_A50();
-#ifdef TRACE_ACTION
-fprintf(stderr, "__ELEVATOR_A50\n");
-#endif
-}
-E[48] = E[46]&&(__CheckVariables(__ELEVATOR_CheckArray[109]),
-#ifdef TRACE_ACTION
-fprintf(stderr, "test 109\n"),
-#endif
-__ELEVATOR_A109());
-E[49] = E[46]&&!(E[48]);
-E[50] = E[49]&&(__CheckVariables(__ELEVATOR_CheckArray[110]),
-#ifdef TRACE_ACTION
-fprintf(stderr, "test 110\n"),
-#endif
-__ELEVATOR_A110());
-E[49] = E[49]&&!(E[50]);
-E[51] = E[49]&&(__CheckVariables(__ELEVATOR_CheckArray[111]),
-#ifdef TRACE_ACTION
-fprintf(stderr, "test 111\n"),
-#endif
-__ELEVATOR_A111());
-E[38] = E[40]&&!(E[38]);
-E[52] = E[38]&&(__CheckVariables(__ELEVATOR_CheckArray[112]),
-#ifdef TRACE_ACTION
-fprintf(stderr, "test 112\n"),
-#endif
-__ELEVATOR_A112());
-E[38] = E[38]&&!(E[52]);
-E[53] = E[38]&&(__CheckVariables(__ELEVATOR_CheckArray[113]),
-#ifdef TRACE_ACTION
-fprintf(stderr, "test 113\n"),
-#endif
-__ELEVATOR_A113());
-E[38] = E[38]&&!(E[53]);
-if (E[38]) {
-__CheckVariables(__ELEVATOR_CheckArray[61]);__ELEVATOR_A61();
-#ifdef TRACE_ACTION
-fprintf(stderr, "__ELEVATOR_A61\n");
-#endif
-}
-E[54] = E[38]&&(__CheckVariables(__ELEVATOR_CheckArray[114]),
-#ifdef TRACE_ACTION
-fprintf(stderr, "test 114\n"),
-#endif
-__ELEVATOR_A114());
-E[55] = E[38]&&!(E[54]);
-E[56] = E[55]&&(__CheckVariables(__ELEVATOR_CheckArray[115]),
-#ifdef TRACE_ACTION
-fprintf(stderr, "test 115\n"),
-#endif
-__ELEVATOR_A115());
-E[55] = E[55]&&!(E[56]);
-E[57] = E[55]&&(__CheckVariables(__ELEVATOR_CheckArray[116]),
-#ifdef TRACE_ACTION
-fprintf(stderr, "test 116\n"),
-#endif
-__ELEVATOR_A116());
-E[58] = E[37]||E[47]||E[48]||E[50]||E[51]||E[52]||E[53]||E[54]||E[56]||E[57];
-if (E[58]) {
-__AppendToList(__ELEVATOR_EmittedList,19);
-}
-if (E[37]) {
+if (E[43]) {
 __CheckVariables(__ELEVATOR_CheckArray[46]);__ELEVATOR_A46();
 #ifdef TRACE_ACTION
 fprintf(stderr, "__ELEVATOR_A46\n");
 #endif
 }
-if (E[47]) {
-__CheckVariables(__ELEVATOR_CheckArray[48]);__ELEVATOR_A48();
+E[31] = E[43]||(E[44]&&!(E[43]))||(E[31]&&!(E[30]));
+E[44] = E[31]&&(__CheckVariables(__ELEVATOR_CheckArray[106]),
 #ifdef TRACE_ACTION
-fprintf(stderr, "__ELEVATOR_A48\n");
+fprintf(stderr, "test 106\n"),
 #endif
-}
-if (E[48]) {
-__CheckVariables(__ELEVATOR_CheckArray[51]);__ELEVATOR_A51();
+__ELEVATOR_A106());
+E[42] = E[44]&&(__CheckVariables(__ELEVATOR_CheckArray[107]),
 #ifdef TRACE_ACTION
-fprintf(stderr, "__ELEVATOR_A51\n");
+fprintf(stderr, "test 107\n"),
 #endif
-}
-if (E[50]) {
-__CheckVariables(__ELEVATOR_CheckArray[53]);__ELEVATOR_A53();
+__ELEVATOR_A107());
+E[41] = E[42]&&(__CheckVariables(__ELEVATOR_CheckArray[108]),
 #ifdef TRACE_ACTION
-fprintf(stderr, "__ELEVATOR_A53\n");
+fprintf(stderr, "test 108\n"),
 #endif
-}
-if (E[51]) {
-__CheckVariables(__ELEVATOR_CheckArray[55]);__ELEVATOR_A55();
-#ifdef TRACE_ACTION
-fprintf(stderr, "__ELEVATOR_A55\n");
-#endif
-}
-if (E[52]) {
-__CheckVariables(__ELEVATOR_CheckArray[57]);__ELEVATOR_A57();
-#ifdef TRACE_ACTION
-fprintf(stderr, "__ELEVATOR_A57\n");
-#endif
-}
-if (E[53]) {
-__CheckVariables(__ELEVATOR_CheckArray[59]);__ELEVATOR_A59();
-#ifdef TRACE_ACTION
-fprintf(stderr, "__ELEVATOR_A59\n");
-#endif
-}
-if (E[54]) {
-__CheckVariables(__ELEVATOR_CheckArray[62]);__ELEVATOR_A62();
-#ifdef TRACE_ACTION
-fprintf(stderr, "__ELEVATOR_A62\n");
-#endif
-}
-if (E[56]) {
-__CheckVariables(__ELEVATOR_CheckArray[64]);__ELEVATOR_A64();
-#ifdef TRACE_ACTION
-fprintf(stderr, "__ELEVATOR_A64\n");
-#endif
-}
-if (E[57]) {
-__CheckVariables(__ELEVATOR_CheckArray[66]);__ELEVATOR_A66();
-#ifdef TRACE_ACTION
-fprintf(stderr, "__ELEVATOR_A66\n");
-#endif
-}
-E[59] = !(_true);
-if (E[37]) {
+__ELEVATOR_A108());
+if (E[41]) {
 __CheckVariables(__ELEVATOR_CheckArray[47]);__ELEVATOR_A47();
 #ifdef TRACE_ACTION
 fprintf(stderr, "__ELEVATOR_A47\n");
 #endif
 }
-if (E[47]) {
+if (E[41]) {
+__CheckVariables(__ELEVATOR_CheckArray[48]);__ELEVATOR_A48();
+#ifdef TRACE_ACTION
+fprintf(stderr, "__ELEVATOR_A48\n");
+#endif
+}
+E[50] = E[42]&&!(E[41]);
+E[51] = E[50]&&(__CheckVariables(__ELEVATOR_CheckArray[109]),
+#ifdef TRACE_ACTION
+fprintf(stderr, "test 109\n"),
+#endif
+__ELEVATOR_A109());
+if (E[51]) {
 __CheckVariables(__ELEVATOR_CheckArray[49]);__ELEVATOR_A49();
 #ifdef TRACE_ACTION
 fprintf(stderr, "__ELEVATOR_A49\n");
 #endif
 }
-if (E[48]) {
+if (E[51]) {
+__CheckVariables(__ELEVATOR_CheckArray[50]);__ELEVATOR_A50();
+#ifdef TRACE_ACTION
+fprintf(stderr, "__ELEVATOR_A50\n");
+#endif
+}
+E[50] = E[50]&&!(E[51]);
+if (E[50]) {
+__CheckVariables(__ELEVATOR_CheckArray[51]);__ELEVATOR_A51();
+#ifdef TRACE_ACTION
+fprintf(stderr, "__ELEVATOR_A51\n");
+#endif
+}
+E[52] = E[50]&&(__CheckVariables(__ELEVATOR_CheckArray[110]),
+#ifdef TRACE_ACTION
+fprintf(stderr, "test 110\n"),
+#endif
+__ELEVATOR_A110());
+if (E[52]) {
 __CheckVariables(__ELEVATOR_CheckArray[52]);__ELEVATOR_A52();
 #ifdef TRACE_ACTION
 fprintf(stderr, "__ELEVATOR_A52\n");
 #endif
 }
-if (E[50]) {
+if (E[52]) {
+__CheckVariables(__ELEVATOR_CheckArray[53]);__ELEVATOR_A53();
+#ifdef TRACE_ACTION
+fprintf(stderr, "__ELEVATOR_A53\n");
+#endif
+}
+E[53] = E[50]&&!(E[52]);
+E[54] = E[53]&&(__CheckVariables(__ELEVATOR_CheckArray[111]),
+#ifdef TRACE_ACTION
+fprintf(stderr, "test 111\n"),
+#endif
+__ELEVATOR_A111());
+if (E[54]) {
 __CheckVariables(__ELEVATOR_CheckArray[54]);__ELEVATOR_A54();
 #ifdef TRACE_ACTION
 fprintf(stderr, "__ELEVATOR_A54\n");
 #endif
 }
-if (E[51]) {
+if (E[54]) {
+__CheckVariables(__ELEVATOR_CheckArray[55]);__ELEVATOR_A55();
+#ifdef TRACE_ACTION
+fprintf(stderr, "__ELEVATOR_A55\n");
+#endif
+}
+E[53] = E[53]&&!(E[54]);
+E[55] = E[53]&&(__CheckVariables(__ELEVATOR_CheckArray[112]),
+#ifdef TRACE_ACTION
+fprintf(stderr, "test 112\n"),
+#endif
+__ELEVATOR_A112());
+if (E[55]) {
 __CheckVariables(__ELEVATOR_CheckArray[56]);__ELEVATOR_A56();
 #ifdef TRACE_ACTION
 fprintf(stderr, "__ELEVATOR_A56\n");
 #endif
 }
-if (E[52]) {
+if (E[55]) {
+__CheckVariables(__ELEVATOR_CheckArray[57]);__ELEVATOR_A57();
+#ifdef TRACE_ACTION
+fprintf(stderr, "__ELEVATOR_A57\n");
+#endif
+}
+E[42] = E[44]&&!(E[42]);
+E[56] = E[42]&&(__CheckVariables(__ELEVATOR_CheckArray[113]),
+#ifdef TRACE_ACTION
+fprintf(stderr, "test 113\n"),
+#endif
+__ELEVATOR_A113());
+if (E[56]) {
 __CheckVariables(__ELEVATOR_CheckArray[58]);__ELEVATOR_A58();
 #ifdef TRACE_ACTION
 fprintf(stderr, "__ELEVATOR_A58\n");
 #endif
 }
-if (E[53]) {
+if (E[56]) {
+__CheckVariables(__ELEVATOR_CheckArray[59]);__ELEVATOR_A59();
+#ifdef TRACE_ACTION
+fprintf(stderr, "__ELEVATOR_A59\n");
+#endif
+}
+E[42] = E[42]&&!(E[56]);
+E[57] = E[42]&&(__CheckVariables(__ELEVATOR_CheckArray[114]),
+#ifdef TRACE_ACTION
+fprintf(stderr, "test 114\n"),
+#endif
+__ELEVATOR_A114());
+if (E[57]) {
 __CheckVariables(__ELEVATOR_CheckArray[60]);__ELEVATOR_A60();
 #ifdef TRACE_ACTION
 fprintf(stderr, "__ELEVATOR_A60\n");
 #endif
 }
-if (E[54]) {
+if (E[57]) {
+__CheckVariables(__ELEVATOR_CheckArray[61]);__ELEVATOR_A61();
+#ifdef TRACE_ACTION
+fprintf(stderr, "__ELEVATOR_A61\n");
+#endif
+}
+E[42] = E[42]&&!(E[57]);
+if (E[42]) {
+__CheckVariables(__ELEVATOR_CheckArray[62]);__ELEVATOR_A62();
+#ifdef TRACE_ACTION
+fprintf(stderr, "__ELEVATOR_A62\n");
+#endif
+}
+E[58] = E[42]&&(__CheckVariables(__ELEVATOR_CheckArray[115]),
+#ifdef TRACE_ACTION
+fprintf(stderr, "test 115\n"),
+#endif
+__ELEVATOR_A115());
+if (E[58]) {
 __CheckVariables(__ELEVATOR_CheckArray[63]);__ELEVATOR_A63();
 #ifdef TRACE_ACTION
 fprintf(stderr, "__ELEVATOR_A63\n");
 #endif
 }
-if (E[56]) {
+if (E[58]) {
+__CheckVariables(__ELEVATOR_CheckArray[64]);__ELEVATOR_A64();
+#ifdef TRACE_ACTION
+fprintf(stderr, "__ELEVATOR_A64\n");
+#endif
+}
+E[59] = E[42]&&!(E[58]);
+E[60] = E[59]&&(__CheckVariables(__ELEVATOR_CheckArray[116]),
+#ifdef TRACE_ACTION
+fprintf(stderr, "test 116\n"),
+#endif
+__ELEVATOR_A116());
+if (E[60]) {
 __CheckVariables(__ELEVATOR_CheckArray[65]);__ELEVATOR_A65();
 #ifdef TRACE_ACTION
 fprintf(stderr, "__ELEVATOR_A65\n");
 #endif
 }
-if (E[57]) {
+if (E[60]) {
+__CheckVariables(__ELEVATOR_CheckArray[66]);__ELEVATOR_A66();
+#ifdef TRACE_ACTION
+fprintf(stderr, "__ELEVATOR_A66\n");
+#endif
+}
+E[59] = E[59]&&!(E[60]);
+E[61] = E[59]&&(__CheckVariables(__ELEVATOR_CheckArray[117]),
+#ifdef TRACE_ACTION
+fprintf(stderr, "test 117\n"),
+#endif
+__ELEVATOR_A117());
+if (E[61]) {
 __CheckVariables(__ELEVATOR_CheckArray[67]);__ELEVATOR_A67();
 #ifdef TRACE_ACTION
 fprintf(stderr, "__ELEVATOR_A67\n");
 #endif
 }
-E[55] = E[37]||E[47]||E[48]||E[50]||E[51]||(E[49]&&!(E[51]))||E[52]||E[53]||E[54]||E[56]||E[57]||(E[55]&&!(E[57]));
-if (E[55]) {
+if (E[61]) {
 __CheckVariables(__ELEVATOR_CheckArray[68]);__ELEVATOR_A68();
 #ifdef TRACE_ACTION
 fprintf(stderr, "__ELEVATOR_A68\n");
 #endif
 }
-E[40] = E[55]||(E[31]&&!(E[40]));
-E[31] = __ELEVATOR_R[2]&&!(__ELEVATOR_R[0]);
-E[49] = E[31]&&!(E[58]);
-E[60] = E[49]&&!((__CheckVariables(__ELEVATOR_CheckArray[10]),
+E[59] = E[41]||E[51]||E[52]||E[54]||E[55]||(E[53]&&!(E[55]))||E[56]||E[57]||E[58]||E[60]||E[61]||(E[59]&&!(E[61]));
+if (E[59]) {
+__CheckVariables(__ELEVATOR_CheckArray[69]);__ELEVATOR_A69();
+#ifdef TRACE_ACTION
+fprintf(stderr, "__ELEVATOR_A69\n");
+#endif
+}
+E[44] = E[31]&&!(E[44]);
+if (E[59]||E[44]) {
+__AppendToList(__ELEVATOR_EmittedList,19);
+}
+if (E[59]||E[44]) {
+__CheckVariables(__ELEVATOR_CheckArray[20]);__ELEVATOR_A20();
+#ifdef TRACE_ACTION
+fprintf(stderr, "__ELEVATOR_A20\n");
+#endif
+}
+E[31] = E[41]||E[51]||E[52]||E[54]||E[55]||E[56]||E[57]||E[58]||E[60]||E[61];
+if (E[31]) {
+__AppendToList(__ELEVATOR_EmittedList,20);
+}
+E[53] = !(_true);
+E[62] = E[59]||E[44];
+E[63] = __ELEVATOR_R[2]&&!(__ELEVATOR_R[0]);
+E[64] = E[63]&&!(E[31]);
+E[65] = E[64]&&!((__CheckVariables(__ELEVATOR_CheckArray[10]),
 #ifdef TRACE_ACTION
 fprintf(stderr, "test 10\n"),
 #endif
 __ELEVATOR_A10()));
-E[60] = __ELEVATOR_R[0]||(__ELEVATOR_R[3]&&!(__ELEVATOR_R[0]))||(__ELEVATOR_R[2]&&E[60]);
-E[58] = E[31]&&E[58];
-E[31] = E[58]&&(__CheckVariables(__ELEVATOR_CheckArray[117]),
-#ifdef TRACE_ACTION
-fprintf(stderr, "test 117\n"),
-#endif
-__ELEVATOR_A117());
-E[61] = E[31]&&(__CheckVariables(__ELEVATOR_CheckArray[118]),
+E[65] = __ELEVATOR_R[0]||(__ELEVATOR_R[3]&&!(__ELEVATOR_R[0]))||(__ELEVATOR_R[2]&&E[65]);
+E[31] = E[63]&&E[31];
+E[63] = E[31]&&(__CheckVariables(__ELEVATOR_CheckArray[118]),
 #ifdef TRACE_ACTION
 fprintf(stderr, "test 118\n"),
 #endif
 __ELEVATOR_A118());
-E[62] = __ELEVATOR_R[4]&&!(__ELEVATOR_R[0]);
-E[63] = E[62]&&!((__CheckVariables(__ELEVATOR_CheckArray[1]),
+E[66] = E[63]&&(__CheckVariables(__ELEVATOR_CheckArray[119]),
+#ifdef TRACE_ACTION
+fprintf(stderr, "test 119\n"),
+#endif
+__ELEVATOR_A119());
+E[67] = __ELEVATOR_R[4]&&!(__ELEVATOR_R[0]);
+E[68] = E[67]&&!((__CheckVariables(__ELEVATOR_CheckArray[1]),
 #ifdef TRACE_ACTION
 fprintf(stderr, "test 1\n"),
 #endif
 __ELEVATOR_A1()));
-E[63] = E[61]||(__ELEVATOR_R[4]&&E[63]);
-E[62] = E[62]&&(__CheckVariables(__ELEVATOR_CheckArray[1]),
+E[68] = E[66]||(__ELEVATOR_R[4]&&E[68]);
+E[67] = E[67]&&(__CheckVariables(__ELEVATOR_CheckArray[1]),
 #ifdef TRACE_ACTION
 fprintf(stderr, "test 1\n"),
 #endif
@@ -2068,127 +2127,127 @@ E[0] = E[0]&&!((__CheckVariables(__ELEVATOR_CheckArray[1]),
 fprintf(stderr, "test 1\n"),
 #endif
 __ELEVATOR_A1()));
-E[0] = E[62]||(__ELEVATOR_R[5]&&E[0]);
+E[0] = E[67]||(__ELEVATOR_R[5]&&E[0]);
 if (E[1]) {
-__CheckVariables(__ELEVATOR_CheckArray[73]);__ELEVATOR_A73();
-#ifdef TRACE_ACTION
-fprintf(stderr, "__ELEVATOR_A73\n");
-#endif
-}
-if (E[11]) {
-__CheckVariables(__ELEVATOR_CheckArray[81]);__ELEVATOR_A81();
-#ifdef TRACE_ACTION
-fprintf(stderr, "__ELEVATOR_A81\n");
-#endif
-}
-E[62] = E[11]||(E[22]&&!(E[45]));
-E[64] = E[62]&&(__CheckVariables(__ELEVATOR_CheckArray[129]),
-#ifdef TRACE_ACTION
-fprintf(stderr, "test 129\n"),
-#endif
-__ELEVATOR_A129());
-if (E[9]) {
 __CheckVariables(__ELEVATOR_CheckArray[74]);__ELEVATOR_A74();
 #ifdef TRACE_ACTION
 fprintf(stderr, "__ELEVATOR_A74\n");
 #endif
 }
-E[58] = E[58]&&!(E[31]);
-E[65] = E[58]&&(__CheckVariables(__ELEVATOR_CheckArray[119]),
-#ifdef TRACE_ACTION
-fprintf(stderr, "test 119\n"),
-#endif
-__ELEVATOR_A119());
-E[58] = E[9]||(E[58]&&!(E[65]));
-E[66] = E[58]&&(__CheckVariables(__ELEVATOR_CheckArray[120]),
-#ifdef TRACE_ACTION
-fprintf(stderr, "test 120\n"),
-#endif
-__ELEVATOR_A120());
-if (E[66]) {
-__CheckVariables(__ELEVATOR_CheckArray[75]);__ELEVATOR_A75();
-#ifdef TRACE_ACTION
-fprintf(stderr, "__ELEVATOR_A75\n");
-#endif
-}
-if (E[66]) {
-__CheckVariables(__ELEVATOR_CheckArray[76]);__ELEVATOR_A76();
-#ifdef TRACE_ACTION
-fprintf(stderr, "__ELEVATOR_A76\n");
-#endif
-}
-if (E[66]) {
-__CheckVariables(__ELEVATOR_CheckArray[77]);__ELEVATOR_A77();
-#ifdef TRACE_ACTION
-fprintf(stderr, "__ELEVATOR_A77\n");
-#endif
-}
-E[67] = E[66]&&(__CheckVariables(__ELEVATOR_CheckArray[121]),
-#ifdef TRACE_ACTION
-fprintf(stderr, "test 121\n"),
-#endif
-__ELEVATOR_A121());
-if (E[13]) {
-__CheckVariables(__ELEVATOR_CheckArray[88]);__ELEVATOR_A88();
-#ifdef TRACE_ACTION
-fprintf(stderr, "__ELEVATOR_A88\n");
-#endif
-}
-E[68] = E[13]||(E[29]&&!(E[45]));
-E[69] = E[68]&&(__CheckVariables(__ELEVATOR_CheckArray[130]),
-#ifdef TRACE_ACTION
-fprintf(stderr, "test 130\n"),
-#endif
-__ELEVATOR_A130());
-E[58] = E[58]&&!(E[66]);
-if (E[58]) {
+if (E[11]) {
 __CheckVariables(__ELEVATOR_CheckArray[82]);__ELEVATOR_A82();
 #ifdef TRACE_ACTION
 fprintf(stderr, "__ELEVATOR_A82\n");
 #endif
 }
-if (E[58]) {
+E[67] = E[11]||(E[22]&&!(E[49]));
+E[69] = E[67]&&(__CheckVariables(__ELEVATOR_CheckArray[130]),
+#ifdef TRACE_ACTION
+fprintf(stderr, "test 130\n"),
+#endif
+__ELEVATOR_A130());
+if (E[9]) {
+__CheckVariables(__ELEVATOR_CheckArray[75]);__ELEVATOR_A75();
+#ifdef TRACE_ACTION
+fprintf(stderr, "__ELEVATOR_A75\n");
+#endif
+}
+E[31] = E[31]&&!(E[63]);
+E[70] = E[31]&&(__CheckVariables(__ELEVATOR_CheckArray[120]),
+#ifdef TRACE_ACTION
+fprintf(stderr, "test 120\n"),
+#endif
+__ELEVATOR_A120());
+E[31] = E[9]||(E[31]&&!(E[70]));
+E[71] = E[31]&&(__CheckVariables(__ELEVATOR_CheckArray[121]),
+#ifdef TRACE_ACTION
+fprintf(stderr, "test 121\n"),
+#endif
+__ELEVATOR_A121());
+if (E[71]) {
+__CheckVariables(__ELEVATOR_CheckArray[76]);__ELEVATOR_A76();
+#ifdef TRACE_ACTION
+fprintf(stderr, "__ELEVATOR_A76\n");
+#endif
+}
+if (E[71]) {
+__CheckVariables(__ELEVATOR_CheckArray[77]);__ELEVATOR_A77();
+#ifdef TRACE_ACTION
+fprintf(stderr, "__ELEVATOR_A77\n");
+#endif
+}
+if (E[71]) {
+__CheckVariables(__ELEVATOR_CheckArray[78]);__ELEVATOR_A78();
+#ifdef TRACE_ACTION
+fprintf(stderr, "__ELEVATOR_A78\n");
+#endif
+}
+E[72] = E[71]&&(__CheckVariables(__ELEVATOR_CheckArray[122]),
+#ifdef TRACE_ACTION
+fprintf(stderr, "test 122\n"),
+#endif
+__ELEVATOR_A122());
+if (E[13]) {
+__CheckVariables(__ELEVATOR_CheckArray[89]);__ELEVATOR_A89();
+#ifdef TRACE_ACTION
+fprintf(stderr, "__ELEVATOR_A89\n");
+#endif
+}
+E[73] = E[13]||(E[29]&&!(E[49]));
+E[74] = E[73]&&(__CheckVariables(__ELEVATOR_CheckArray[131]),
+#ifdef TRACE_ACTION
+fprintf(stderr, "test 131\n"),
+#endif
+__ELEVATOR_A131());
+E[31] = E[31]&&!(E[71]);
+if (E[31]) {
 __CheckVariables(__ELEVATOR_CheckArray[83]);__ELEVATOR_A83();
 #ifdef TRACE_ACTION
 fprintf(stderr, "__ELEVATOR_A83\n");
 #endif
 }
-if (E[58]) {
+if (E[31]) {
 __CheckVariables(__ELEVATOR_CheckArray[84]);__ELEVATOR_A84();
 #ifdef TRACE_ACTION
 fprintf(stderr, "__ELEVATOR_A84\n");
 #endif
 }
-E[70] = E[58]&&(__CheckVariables(__ELEVATOR_CheckArray[122]),
+if (E[31]) {
+__CheckVariables(__ELEVATOR_CheckArray[85]);__ELEVATOR_A85();
 #ifdef TRACE_ACTION
-fprintf(stderr, "test 122\n"),
-#endif
-__ELEVATOR_A122());
-if (E[15]) {
-__CheckVariables(__ELEVATOR_CheckArray[90]);__ELEVATOR_A90();
-#ifdef TRACE_ACTION
-fprintf(stderr, "__ELEVATOR_A90\n");
+fprintf(stderr, "__ELEVATOR_A85\n");
 #endif
 }
-E[49] = E[49]&&(__CheckVariables(__ELEVATOR_CheckArray[10]),
-#ifdef TRACE_ACTION
-fprintf(stderr, "test 10\n"),
-#endif
-__ELEVATOR_A10());
-E[71] = E[49]&&(__CheckVariables(__ELEVATOR_CheckArray[123]),
+E[75] = E[31]&&(__CheckVariables(__ELEVATOR_CheckArray[123]),
 #ifdef TRACE_ACTION
 fprintf(stderr, "test 123\n"),
 #endif
 __ELEVATOR_A123());
-E[49] = E[1]||(E[31]&&!(E[61]))||E[64]||(E[66]&&!(E[67]))||E[69]||(E[58]&&!(E[70]))||E[15]||(E[49]&&!(E[71]));
-E[61] = __ELEVATOR_R[6]&&!(__ELEVATOR_R[0]);
-E[31] = E[61]&&!((__CheckVariables(__ELEVATOR_CheckArray[1]),
+if (E[15]) {
+__CheckVariables(__ELEVATOR_CheckArray[91]);__ELEVATOR_A91();
+#ifdef TRACE_ACTION
+fprintf(stderr, "__ELEVATOR_A91\n");
+#endif
+}
+E[64] = E[64]&&(__CheckVariables(__ELEVATOR_CheckArray[10]),
+#ifdef TRACE_ACTION
+fprintf(stderr, "test 10\n"),
+#endif
+__ELEVATOR_A10());
+E[76] = E[64]&&(__CheckVariables(__ELEVATOR_CheckArray[124]),
+#ifdef TRACE_ACTION
+fprintf(stderr, "test 124\n"),
+#endif
+__ELEVATOR_A124());
+E[64] = E[1]||(E[63]&&!(E[66]))||E[69]||(E[71]&&!(E[72]))||E[74]||(E[31]&&!(E[75]))||E[15]||(E[64]&&!(E[76]));
+E[66] = __ELEVATOR_R[6]&&!(__ELEVATOR_R[0]);
+E[63] = E[66]&&!((__CheckVariables(__ELEVATOR_CheckArray[1]),
 #ifdef TRACE_ACTION
 fprintf(stderr, "test 1\n"),
 #endif
 __ELEVATOR_A1()));
-E[31] = E[65]||(__ELEVATOR_R[6]&&E[31]);
-E[61] = E[61]&&(__CheckVariables(__ELEVATOR_CheckArray[1]),
+E[63] = E[70]||(__ELEVATOR_R[6]&&E[63]);
+E[66] = E[66]&&(__CheckVariables(__ELEVATOR_CheckArray[1]),
 #ifdef TRACE_ACTION
 fprintf(stderr, "test 1\n"),
 #endif
@@ -2198,13 +2257,13 @@ E[8] = E[8]&&!((__CheckVariables(__ELEVATOR_CheckArray[1]),
 fprintf(stderr, "test 1\n"),
 #endif
 __ELEVATOR_A1()));
-E[8] = E[61]||(__ELEVATOR_R[7]&&E[8]);
+E[8] = E[66]||(__ELEVATOR_R[7]&&E[8]);
 E[19] = E[19]&&!((__CheckVariables(__ELEVATOR_CheckArray[1]),
 #ifdef TRACE_ACTION
 fprintf(stderr, "test 1\n"),
 #endif
 __ELEVATOR_A1()));
-E[19] = E[67]||(E[62]&&!(E[64]))||(__ELEVATOR_R[8]&&E[19]);
+E[19] = E[72]||(E[67]&&!(E[69]))||(__ELEVATOR_R[8]&&E[19]);
 E[16] = E[16]&&!((__CheckVariables(__ELEVATOR_CheckArray[1]),
 #ifdef TRACE_ACTION
 fprintf(stderr, "test 1\n"),
@@ -2217,7 +2276,7 @@ E[17] = E[18]&&!((__CheckVariables(__ELEVATOR_CheckArray[1]),
 fprintf(stderr, "test 1\n"),
 #endif
 __ELEVATOR_A1()));
-E[17] = (E[22]&&E[45])||(__ELEVATOR_R[10]&&E[17]);
+E[17] = (E[22]&&E[49])||(__ELEVATOR_R[10]&&E[17]);
 E[18] = E[18]&&(__CheckVariables(__ELEVATOR_CheckArray[1]),
 #ifdef TRACE_ACTION
 fprintf(stderr, "test 1\n"),
@@ -2230,47 +2289,47 @@ fprintf(stderr, "test 1\n"),
 __ELEVATOR_A1()));
 E[2] = E[18]||(__ELEVATOR_R[11]&&E[2]);
 if (E[3]) {
-__CheckVariables(__ELEVATOR_CheckArray[80]);__ELEVATOR_A80();
+__CheckVariables(__ELEVATOR_CheckArray[81]);__ELEVATOR_A81();
 #ifdef TRACE_ACTION
-fprintf(stderr, "__ELEVATOR_A80\n");
+fprintf(stderr, "__ELEVATOR_A81\n");
 #endif
 }
 if (E[3]) {
-__CheckVariables(__ELEVATOR_CheckArray[92]);__ELEVATOR_A92();
+__CheckVariables(__ELEVATOR_CheckArray[93]);__ELEVATOR_A93();
 #ifdef TRACE_ACTION
-fprintf(stderr, "__ELEVATOR_A92\n");
+fprintf(stderr, "__ELEVATOR_A93\n");
 #endif
 }
-E[18] = E[3]&&(__CheckVariables(__ELEVATOR_CheckArray[125]),
+E[18] = E[3]&&(__CheckVariables(__ELEVATOR_CheckArray[126]),
 #ifdef TRACE_ACTION
-fprintf(stderr, "test 125\n"),
+fprintf(stderr, "test 126\n"),
 #endif
-__ELEVATOR_A125());
+__ELEVATOR_A126());
 E[21] = __ELEVATOR_R[12]&&!(__ELEVATOR_R[0]);
-E[64] = E[21]&&(__CheckVariables(__ELEVATOR_CheckArray[1]),
+E[69] = E[21]&&(__CheckVariables(__ELEVATOR_CheckArray[1]),
 #ifdef TRACE_ACTION
 fprintf(stderr, "test 1\n"),
 #endif
 __ELEVATOR_A1());
-E[62] = E[64]&&(__CheckVariables(__ELEVATOR_CheckArray[132]),
+E[67] = E[69]&&(__CheckVariables(__ELEVATOR_CheckArray[133]),
 #ifdef TRACE_ACTION
-fprintf(stderr, "test 132\n"),
+fprintf(stderr, "test 133\n"),
 #endif
-__ELEVATOR_A132());
+__ELEVATOR_A133());
 E[21] = E[21]&&!((__CheckVariables(__ELEVATOR_CheckArray[1]),
 #ifdef TRACE_ACTION
 fprintf(stderr, "test 1\n"),
 #endif
 __ELEVATOR_A1()));
-E[21] = E[18]||(E[64]&&!(E[62]))||(__ELEVATOR_R[12]&&E[21]);
-E[64] = __ELEVATOR_R[13]&&!(__ELEVATOR_R[0]);
-E[67] = E[64]&&!((__CheckVariables(__ELEVATOR_CheckArray[1]),
+E[21] = E[18]||(E[69]&&!(E[67]))||(__ELEVATOR_R[12]&&E[21]);
+E[69] = __ELEVATOR_R[13]&&!(__ELEVATOR_R[0]);
+E[72] = E[69]&&!((__CheckVariables(__ELEVATOR_CheckArray[1]),
 #ifdef TRACE_ACTION
 fprintf(stderr, "test 1\n"),
 #endif
 __ELEVATOR_A1()));
-E[67] = E[62]||(E[3]&&!(E[18]))||(__ELEVATOR_R[13]&&E[67]);
-E[64] = E[64]&&(__CheckVariables(__ELEVATOR_CheckArray[1]),
+E[72] = E[67]||(E[3]&&!(E[18]))||(__ELEVATOR_R[13]&&E[72]);
+E[69] = E[69]&&(__CheckVariables(__ELEVATOR_CheckArray[1]),
 #ifdef TRACE_ACTION
 fprintf(stderr, "test 1\n"),
 #endif
@@ -2280,13 +2339,13 @@ E[10] = E[10]&&!((__CheckVariables(__ELEVATOR_CheckArray[1]),
 fprintf(stderr, "test 1\n"),
 #endif
 __ELEVATOR_A1()));
-E[10] = E[64]||(__ELEVATOR_R[14]&&E[10]);
+E[10] = E[69]||(__ELEVATOR_R[14]&&E[10]);
 E[26] = E[26]&&!((__CheckVariables(__ELEVATOR_CheckArray[1]),
 #ifdef TRACE_ACTION
 fprintf(stderr, "test 1\n"),
 #endif
 __ELEVATOR_A1()));
-E[26] = E[70]||(E[68]&&!(E[69]))||(__ELEVATOR_R[15]&&E[26]);
+E[26] = E[75]||(E[73]&&!(E[74]))||(__ELEVATOR_R[15]&&E[26]);
 E[23] = E[23]&&!((__CheckVariables(__ELEVATOR_CheckArray[1]),
 #ifdef TRACE_ACTION
 fprintf(stderr, "test 1\n"),
@@ -2299,7 +2358,7 @@ E[24] = E[25]&&!((__CheckVariables(__ELEVATOR_CheckArray[1]),
 fprintf(stderr, "test 1\n"),
 #endif
 __ELEVATOR_A1()));
-E[24] = (E[29]&&E[45])||(__ELEVATOR_R[17]&&E[24]);
+E[24] = (E[29]&&E[49])||(__ELEVATOR_R[17]&&E[24]);
 E[25] = E[25]&&(__CheckVariables(__ELEVATOR_CheckArray[1]),
 #ifdef TRACE_ACTION
 fprintf(stderr, "test 1\n"),
@@ -2312,47 +2371,47 @@ fprintf(stderr, "test 1\n"),
 __ELEVATOR_A1()));
 E[4] = E[25]||(__ELEVATOR_R[18]&&E[4]);
 if (E[5]) {
-__CheckVariables(__ELEVATOR_CheckArray[87]);__ELEVATOR_A87();
+__CheckVariables(__ELEVATOR_CheckArray[88]);__ELEVATOR_A88();
 #ifdef TRACE_ACTION
-fprintf(stderr, "__ELEVATOR_A87\n");
+fprintf(stderr, "__ELEVATOR_A88\n");
 #endif
 }
 if (E[5]) {
-__CheckVariables(__ELEVATOR_CheckArray[94]);__ELEVATOR_A94();
+__CheckVariables(__ELEVATOR_CheckArray[95]);__ELEVATOR_A95();
 #ifdef TRACE_ACTION
-fprintf(stderr, "__ELEVATOR_A94\n");
+fprintf(stderr, "__ELEVATOR_A95\n");
 #endif
 }
-E[25] = E[5]&&(__CheckVariables(__ELEVATOR_CheckArray[127]),
+E[25] = E[5]&&(__CheckVariables(__ELEVATOR_CheckArray[128]),
 #ifdef TRACE_ACTION
-fprintf(stderr, "test 127\n"),
+fprintf(stderr, "test 128\n"),
 #endif
-__ELEVATOR_A127());
+__ELEVATOR_A128());
 E[28] = __ELEVATOR_R[19]&&!(__ELEVATOR_R[0]);
-E[69] = E[28]&&(__CheckVariables(__ELEVATOR_CheckArray[1]),
+E[74] = E[28]&&(__CheckVariables(__ELEVATOR_CheckArray[1]),
 #ifdef TRACE_ACTION
 fprintf(stderr, "test 1\n"),
 #endif
 __ELEVATOR_A1());
-E[68] = E[69]&&(__CheckVariables(__ELEVATOR_CheckArray[134]),
+E[73] = E[74]&&(__CheckVariables(__ELEVATOR_CheckArray[135]),
 #ifdef TRACE_ACTION
-fprintf(stderr, "test 134\n"),
+fprintf(stderr, "test 135\n"),
 #endif
-__ELEVATOR_A134());
+__ELEVATOR_A135());
 E[28] = E[28]&&!((__CheckVariables(__ELEVATOR_CheckArray[1]),
 #ifdef TRACE_ACTION
 fprintf(stderr, "test 1\n"),
 #endif
 __ELEVATOR_A1()));
-E[28] = E[25]||(E[69]&&!(E[68]))||(__ELEVATOR_R[19]&&E[28]);
-E[69] = __ELEVATOR_R[20]&&!(__ELEVATOR_R[0]);
-E[70] = E[69]&&!((__CheckVariables(__ELEVATOR_CheckArray[1]),
+E[28] = E[25]||(E[74]&&!(E[73]))||(__ELEVATOR_R[19]&&E[28]);
+E[74] = __ELEVATOR_R[20]&&!(__ELEVATOR_R[0]);
+E[75] = E[74]&&!((__CheckVariables(__ELEVATOR_CheckArray[1]),
 #ifdef TRACE_ACTION
 fprintf(stderr, "test 1\n"),
 #endif
 __ELEVATOR_A1()));
-E[70] = E[68]||(E[5]&&!(E[25]))||(__ELEVATOR_R[20]&&E[70]);
-E[69] = E[69]&&(__CheckVariables(__ELEVATOR_CheckArray[1]),
+E[75] = E[73]||(E[5]&&!(E[25]))||(__ELEVATOR_R[20]&&E[75]);
+E[74] = E[74]&&(__CheckVariables(__ELEVATOR_CheckArray[1]),
 #ifdef TRACE_ACTION
 fprintf(stderr, "test 1\n"),
 #endif
@@ -2362,15 +2421,15 @@ E[12] = E[12]&&!((__CheckVariables(__ELEVATOR_CheckArray[1]),
 fprintf(stderr, "test 1\n"),
 #endif
 __ELEVATOR_A1()));
-E[12] = E[69]||(__ELEVATOR_R[21]&&E[12]);
-E[69] = __ELEVATOR_R[22]&&!(__ELEVATOR_R[0]);
-E[25] = E[69]&&!((__CheckVariables(__ELEVATOR_CheckArray[1]),
+E[12] = E[74]||(__ELEVATOR_R[21]&&E[12]);
+E[74] = __ELEVATOR_R[22]&&!(__ELEVATOR_R[0]);
+E[25] = E[74]&&!((__CheckVariables(__ELEVATOR_CheckArray[1]),
 #ifdef TRACE_ACTION
 fprintf(stderr, "test 1\n"),
 #endif
 __ELEVATOR_A1()));
-E[25] = E[71]||(__ELEVATOR_R[22]&&E[25]);
-E[69] = E[69]&&(__CheckVariables(__ELEVATOR_CheckArray[1]),
+E[25] = E[76]||(__ELEVATOR_R[22]&&E[25]);
+E[74] = E[74]&&(__CheckVariables(__ELEVATOR_CheckArray[1]),
 #ifdef TRACE_ACTION
 fprintf(stderr, "test 1\n"),
 #endif
@@ -2380,49 +2439,49 @@ E[6] = E[6]&&!((__CheckVariables(__ELEVATOR_CheckArray[1]),
 fprintf(stderr, "test 1\n"),
 #endif
 __ELEVATOR_A1()));
-E[6] = E[69]||(__ELEVATOR_R[23]&&E[6]);
+E[6] = E[74]||(__ELEVATOR_R[23]&&E[6]);
 if (E[7]) {
-__CheckVariables(__ELEVATOR_CheckArray[89]);__ELEVATOR_A89();
+__CheckVariables(__ELEVATOR_CheckArray[90]);__ELEVATOR_A90();
 #ifdef TRACE_ACTION
-fprintf(stderr, "__ELEVATOR_A89\n");
+fprintf(stderr, "__ELEVATOR_A90\n");
 #endif
 }
 if (E[7]) {
-__CheckVariables(__ELEVATOR_CheckArray[95]);__ELEVATOR_A95();
+__CheckVariables(__ELEVATOR_CheckArray[96]);__ELEVATOR_A96();
 #ifdef TRACE_ACTION
-fprintf(stderr, "__ELEVATOR_A95\n");
+fprintf(stderr, "__ELEVATOR_A96\n");
 #endif
 }
-E[69] = E[7]&&(__CheckVariables(__ELEVATOR_CheckArray[128]),
+E[74] = E[7]&&(__CheckVariables(__ELEVATOR_CheckArray[129]),
 #ifdef TRACE_ACTION
-fprintf(stderr, "test 128\n"),
+fprintf(stderr, "test 129\n"),
 #endif
-__ELEVATOR_A128());
-E[71] = __ELEVATOR_R[24]&&!(__ELEVATOR_R[0]);
-E[68] = E[71]&&(__CheckVariables(__ELEVATOR_CheckArray[1]),
+__ELEVATOR_A129());
+E[76] = __ELEVATOR_R[24]&&!(__ELEVATOR_R[0]);
+E[73] = E[76]&&(__CheckVariables(__ELEVATOR_CheckArray[1]),
 #ifdef TRACE_ACTION
 fprintf(stderr, "test 1\n"),
 #endif
 __ELEVATOR_A1());
-E[64] = E[68]&&(__CheckVariables(__ELEVATOR_CheckArray[135]),
+E[69] = E[73]&&(__CheckVariables(__ELEVATOR_CheckArray[136]),
 #ifdef TRACE_ACTION
-fprintf(stderr, "test 135\n"),
+fprintf(stderr, "test 136\n"),
 #endif
-__ELEVATOR_A135());
-E[71] = E[71]&&!((__CheckVariables(__ELEVATOR_CheckArray[1]),
-#ifdef TRACE_ACTION
-fprintf(stderr, "test 1\n"),
-#endif
-__ELEVATOR_A1()));
-E[71] = E[69]||(E[68]&&!(E[64]))||(__ELEVATOR_R[24]&&E[71]);
-E[68] = __ELEVATOR_R[25]&&!(__ELEVATOR_R[0]);
-E[18] = E[68]&&!((__CheckVariables(__ELEVATOR_CheckArray[1]),
+__ELEVATOR_A136());
+E[76] = E[76]&&!((__CheckVariables(__ELEVATOR_CheckArray[1]),
 #ifdef TRACE_ACTION
 fprintf(stderr, "test 1\n"),
 #endif
 __ELEVATOR_A1()));
-E[18] = E[64]||(E[7]&&!(E[69]))||(__ELEVATOR_R[25]&&E[18]);
-E[68] = E[68]&&(__CheckVariables(__ELEVATOR_CheckArray[1]),
+E[76] = E[74]||(E[73]&&!(E[69]))||(__ELEVATOR_R[24]&&E[76]);
+E[73] = __ELEVATOR_R[25]&&!(__ELEVATOR_R[0]);
+E[18] = E[73]&&!((__CheckVariables(__ELEVATOR_CheckArray[1]),
+#ifdef TRACE_ACTION
+fprintf(stderr, "test 1\n"),
+#endif
+__ELEVATOR_A1()));
+E[18] = E[69]||(E[7]&&!(E[74]))||(__ELEVATOR_R[25]&&E[18]);
+E[73] = E[73]&&(__CheckVariables(__ELEVATOR_CheckArray[1]),
 #ifdef TRACE_ACTION
 fprintf(stderr, "test 1\n"),
 #endif
@@ -2432,22 +2491,22 @@ E[14] = E[14]&&!((__CheckVariables(__ELEVATOR_CheckArray[1]),
 fprintf(stderr, "test 1\n"),
 #endif
 __ELEVATOR_A1()));
-E[14] = E[68]||(__ELEVATOR_R[26]&&E[14]);
-E[68] = __ELEVATOR_R[2]||__ELEVATOR_R[4]||__ELEVATOR_R[5]||__ELEVATOR_R[3]||__ELEVATOR_R[6]||__ELEVATOR_R[7]||__ELEVATOR_R[8]||__ELEVATOR_R[9]||__ELEVATOR_R[10]||__ELEVATOR_R[11]||__ELEVATOR_R[12]||__ELEVATOR_R[13]||__ELEVATOR_R[14]||__ELEVATOR_R[15]||__ELEVATOR_R[16]||__ELEVATOR_R[17]||__ELEVATOR_R[18]||__ELEVATOR_R[19]||__ELEVATOR_R[20]||__ELEVATOR_R[21]||__ELEVATOR_R[22]||__ELEVATOR_R[23]||__ELEVATOR_R[24]||__ELEVATOR_R[25]||__ELEVATOR_R[26];
-E[69] = __ELEVATOR_R[1]||E[68];
-E[68] = (E[40]||E[60]||E[63]||E[0]||E[49]||E[31]||E[8]||E[19]||E[16]||E[17]||E[2]||E[21]||E[67]||E[10]||E[26]||E[23]||E[24]||E[4]||E[28]||E[70]||E[12]||E[25]||E[6]||E[71]||E[18]||E[14])&&((E[69]&&!(__ELEVATOR_R[1]))||E[40])&&((E[69]&&!(E[68]))||E[60]||E[63]||E[0]||E[49]||E[31]||E[8]||E[19]||E[16]||E[17]||E[2]||E[21]||E[67]||E[10]||E[26]||E[23]||E[24]||E[4]||E[28]||E[70]||E[12]||E[25]||E[6]||E[71]||E[18]||E[14]);
+E[14] = E[73]||(__ELEVATOR_R[26]&&E[14]);
+E[73] = __ELEVATOR_R[2]||__ELEVATOR_R[4]||__ELEVATOR_R[5]||__ELEVATOR_R[3]||__ELEVATOR_R[6]||__ELEVATOR_R[7]||__ELEVATOR_R[8]||__ELEVATOR_R[9]||__ELEVATOR_R[10]||__ELEVATOR_R[11]||__ELEVATOR_R[12]||__ELEVATOR_R[13]||__ELEVATOR_R[14]||__ELEVATOR_R[15]||__ELEVATOR_R[16]||__ELEVATOR_R[17]||__ELEVATOR_R[18]||__ELEVATOR_R[19]||__ELEVATOR_R[20]||__ELEVATOR_R[21]||__ELEVATOR_R[22]||__ELEVATOR_R[23]||__ELEVATOR_R[24]||__ELEVATOR_R[25]||__ELEVATOR_R[26];
+E[74] = __ELEVATOR_R[1]||E[73];
+E[73] = (E[62]||E[65]||E[68]||E[0]||E[64]||E[63]||E[8]||E[19]||E[16]||E[17]||E[2]||E[21]||E[72]||E[10]||E[26]||E[23]||E[24]||E[4]||E[28]||E[75]||E[12]||E[25]||E[6]||E[76]||E[18]||E[14])&&((E[74]&&!(__ELEVATOR_R[1]))||E[62])&&((E[74]&&!(E[73]))||E[65]||E[68]||E[0]||E[64]||E[63]||E[8]||E[19]||E[16]||E[17]||E[2]||E[21]||E[72]||E[10]||E[26]||E[23]||E[24]||E[4]||E[28]||E[75]||E[12]||E[25]||E[6]||E[76]||E[18]||E[14]);
 __ELEVATOR_R[0] = !(_true);
-__ELEVATOR_R[1] = E[40];
+__ELEVATOR_R[1] = E[62];
 if (__ELEVATOR_R[1]) { __AppendToList(__ELEVATOR_HaltList,1); }
-__ELEVATOR_R[2] = E[60];
+__ELEVATOR_R[2] = E[65];
 if (__ELEVATOR_R[2]) { __AppendToList(__ELEVATOR_HaltList,2); }
-__ELEVATOR_R[3] = E[49];
+__ELEVATOR_R[3] = E[64];
 if (__ELEVATOR_R[3]) { __AppendToList(__ELEVATOR_HaltList,3); }
-__ELEVATOR_R[4] = E[63];
+__ELEVATOR_R[4] = E[68];
 if (__ELEVATOR_R[4]) { __AppendToList(__ELEVATOR_HaltList,4); }
 __ELEVATOR_R[5] = E[0];
 if (__ELEVATOR_R[5]) { __AppendToList(__ELEVATOR_HaltList,5); }
-__ELEVATOR_R[6] = E[31];
+__ELEVATOR_R[6] = E[63];
 if (__ELEVATOR_R[6]) { __AppendToList(__ELEVATOR_HaltList,6); }
 __ELEVATOR_R[7] = E[8];
 if (__ELEVATOR_R[7]) { __AppendToList(__ELEVATOR_HaltList,7); }
@@ -2461,7 +2520,7 @@ __ELEVATOR_R[11] = E[2];
 if (__ELEVATOR_R[11]) { __AppendToList(__ELEVATOR_HaltList,11); }
 __ELEVATOR_R[12] = E[21];
 if (__ELEVATOR_R[12]) { __AppendToList(__ELEVATOR_HaltList,12); }
-__ELEVATOR_R[13] = E[67];
+__ELEVATOR_R[13] = E[72];
 if (__ELEVATOR_R[13]) { __AppendToList(__ELEVATOR_HaltList,13); }
 __ELEVATOR_R[14] = E[10];
 if (__ELEVATOR_R[14]) { __AppendToList(__ELEVATOR_HaltList,14); }
@@ -2475,7 +2534,7 @@ __ELEVATOR_R[18] = E[4];
 if (__ELEVATOR_R[18]) { __AppendToList(__ELEVATOR_HaltList,18); }
 __ELEVATOR_R[19] = E[28];
 if (__ELEVATOR_R[19]) { __AppendToList(__ELEVATOR_HaltList,19); }
-__ELEVATOR_R[20] = E[70];
+__ELEVATOR_R[20] = E[75];
 if (__ELEVATOR_R[20]) { __AppendToList(__ELEVATOR_HaltList,20); }
 __ELEVATOR_R[21] = E[12];
 if (__ELEVATOR_R[21]) { __AppendToList(__ELEVATOR_HaltList,21); }
@@ -2483,17 +2542,17 @@ __ELEVATOR_R[22] = E[25];
 if (__ELEVATOR_R[22]) { __AppendToList(__ELEVATOR_HaltList,22); }
 __ELEVATOR_R[23] = E[6];
 if (__ELEVATOR_R[23]) { __AppendToList(__ELEVATOR_HaltList,23); }
-__ELEVATOR_R[24] = E[71];
+__ELEVATOR_R[24] = E[76];
 if (__ELEVATOR_R[24]) { __AppendToList(__ELEVATOR_HaltList,24); }
 __ELEVATOR_R[25] = E[18];
 if (__ELEVATOR_R[25]) { __AppendToList(__ELEVATOR_HaltList,25); }
 __ELEVATOR_R[26] = E[14];
 if (__ELEVATOR_R[26]) { __AppendToList(__ELEVATOR_HaltList,26); }
-if (!E[68]) { __AppendToList(__ELEVATOR_HaltList,0); }
+if (!E[73]) { __AppendToList(__ELEVATOR_HaltList,0); }
 __ResetModuleEntryAfterReaction();
 __ELEVATOR_ModuleData.awaited_list = __ELEVATOR_AllAwaitedList;
 __ELEVATOR__reset_input();
-return E[68];
+return E[73];
 }
 
 /* AUTOMATON RESET */

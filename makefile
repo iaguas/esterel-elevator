@@ -8,8 +8,8 @@ LD        = $(CC)
 STRL      = esterel
 XES       = xes
 
-CFLAGS    = -c -g
-CINCLUDE  = -m32
+CFLAGS    = -g
+CINCLUDE  = -m32 -c
 LIBS	  = 
 
 STRLFLAGS = -simul
@@ -36,7 +36,7 @@ simul-comp:	$(FILES:.c=.strl)
 	$(STRL) $(STRLFLAGS) $(FILES) -B $(SRCSIMDIR)simul
 	mv simul.c $(SRCSIMDIR)simul.c
 	mkdir -p $(BINDIR)
-	$(CC) $(CFLAGS) $(SRCSIMDIR)simul.c $(LIBS) -o $(BINDIR)simul.o
+	$(CC) $(CFLAGS) $(CINCLUDE) $(SRCSIMDIR)simul.c $(LIBS) -o $(BINDIR)simul.o
 
 simul32: $(BINDIR)simul.o
 	$(XES) $(X32FLAGS) $(BINDIR)simul.o
@@ -48,5 +48,4 @@ clean:
 	$(RM)  $(BINDIR)
 	
 cleanall: clean
-	$(RM) $(SRCSIMDIR) $(SRCCDIR)
-
+	$(RM) $(SRCSIMDIR) $(SRCCDIR)elevator.c  

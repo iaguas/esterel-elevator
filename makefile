@@ -43,6 +43,18 @@ simul32: $(BINDIR)simul.o
 
 simul64: $(BINDIR)simul.o
 	$(XES) $(X64FLAGS) $(BINDIR)simul.o
+	
+c-comp:
+	mkdir -p $(SRCCDIR)
+	$(STRL) $(FILES) -B $(SRCCDIR)elevator
+	mv elevator.c $(SRCCDIR)elevator.c
+	mkdir -p $(BINDIR)
+	$(CC) $(CFLAGS) $(CINCLUDE) $(SRCCDIR)elevator.c -o $(BINDIR)elevator.o
+	$(CC) $(CFLAGS) $(CINCLUDE) $(SRCCDIR)elevator_main.c -o $(BINDIR)elevator_main.o
+	$(CC) $(CFLAGS) $(LIBS) $(BINDIR)elevator.o $(BINDIR)elevator_main.o -o $(BINDIR)elevator
+	
+c:
+	$(BINDIR)elevator
 
 clean:
 	$(RM)  $(BINDIR)

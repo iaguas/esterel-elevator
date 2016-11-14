@@ -15,6 +15,9 @@ There is a `makefile` programed to make all in a computer with esterel installed
  + `simul-comp`: Compilation for using the simulation mode.
  + `simul32`: Simulation mode for 32 bits core.
  + `simul64`: Simulation mode for 64 bits core.
+* C interface mode
+ + `c-comp`: Compilation for using the C interface mode.
+ + `c`: Execution for C interface mode.
 * Cleaning mode
  + `clean`: Option to remove binary files.
  + `cleanall`: Option to remove binary files and other generated files.

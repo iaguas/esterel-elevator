@@ -7,6 +7,10 @@ All the information about the project can be discovered [here](https://github.co
 ### Extra asumtions
 * The elevator starts at 1st floor.
 * The elevator starts with doors closed.
+* All the lights starts off and the buttons not pushed.
+
+### Project report
+The report of the project can be discovered [here](https://github.com/iaguas/esterel-elevator/blob/master/doc/report.pdf). Inside is described all the caracteristics, comments and conclutions about this project.
 
 ## Compilation and simulation
 There is a `makefile` programed to make all in a computer with esterel installed. There are several options:

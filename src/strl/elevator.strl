@@ -7,10 +7,11 @@ module ELEVATOR:
 %   output FLOORBUTTON:integer, FLOORTARGET:integer;
     output DOOROPENED, DOORCLOSED;
     output CURRENTFLOOR:integer;
-    output WRONG, STOP;
+    output WRONG;
     output LF1, LF2, LF3, LF4, LOUT;
+    %output F1,F2,F3,F4;
 
-    signal TARGET:integer in
+    signal STOP, ENDPROCESS, TARGET:integer in
 		
         run BUTTONS [signal TARGET/FLOORTARGET]
 

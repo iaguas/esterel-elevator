@@ -3,19 +3,23 @@ module CABIN:
     input OPENDOOR;
     input STOP;
     input FLOORTARGET:integer;
-    output DOOROPENED, DOORCLOSED;
+    output DOOROPENED, DOORCLOSED, LOUT, ENDPROCESS;
     output CURRENTFLOOR:integer;
 
     var floor:=1:integer, duration:integer, doorOpenState:=false:boolean, elevatorUpState:=true:boolean in
     emit CURRENTFLOOR(floor);
-    loop
-                %pause;		
+    loop	
+        emit ENDPROCESS;
 	    await 
         case FLOORTARGET do
+						emit LOUT;
             if floor = ?FLOORTARGET then
                 if doorOpenState = false then   % if is closed 
                     run OpenDoor;
                     doorOpenState:=true;
+                    run DoorAwaitingTime;
+                    run CloseDoor;
+                    doorOpenState:=false;
                 end if;
 
             else
@@ -25,7 +29,7 @@ module CABIN:
                     doorOpenState:=false;
                 end if;
 				
-                if floor > ?FLOORTARGET then % Bajando
+                if floor > ?FLOORTARGET then % Going down
                     elevatorUpState:=false;
                     duration := (floor - ?FLOORTARGET);
                     repeat duration times
@@ -40,7 +44,7 @@ module CABIN:
                             doorOpenState:=false;
                         end present;
                     end repeat;
-                else % Subiendo
+                else % Going up
                     elevatorUpState := true;
                     duration := (?FLOORTARGET - floor);
                     repeat duration times
@@ -60,6 +64,7 @@ module CABIN:
             end if;
 
         case OPENDOOR do
+            emit LOUT;
             if doorOpenState = false then   % if is closed 
                 run OpenDoor;
                 doorOpenState:=true;
@@ -69,6 +74,7 @@ module CABIN:
             end if;
             
         end await;
+        emit LOUT;
         pause;
     end loop
     end var

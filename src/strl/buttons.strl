@@ -2,39 +2,47 @@ module BUTTONS:
     input CALLF1, CALLF2, CALLF3, CALLF4;	 % One for each floor
     input GOF1, GOF2, GOF3, GOF4;	% In the cabin
     input OPENDOOR;	% In the cabin
-    input SECOND;
+    input SECOND, ENDPROCESS;
     input CURRENTFLOOR:integer;
     output FLOORTARGET:integer;
     output WRONG, STOP;
-    output LF1, LF2, LF3, LF4, LOUT;
+    output LF1, LF2, LF3, LF4;
+    %output F1,F2,F3,F4;
     output DOOROPENED, DOORCLOSED;
     
     
-    var  stateF1:=false:boolean, stateF2:=false:boolean, stateF3:=false:boolean, stateF4:=false:boolean, elevatorFree:=true:boolean, elevatorUpState:=true:boolean,
-nextFloor:=1:integer in
+    var  stateF1:=false:boolean, stateF2:=false:boolean, stateF3:=false:boolean, stateF4:=false:boolean, lightF1:=false:boolean, lightF2:=false:boolean, lightF3:=false:boolean, lightF4:=false:boolean, elevatorFree:=true:boolean, elevatorUpState:=true:boolean, nextFloor:=1:integer, endprocess:=true:boolean in
     loop	% One for each floor
         present CALLF1 or GOF1 then
+        %emit F1;
             stateF1 := true;
             present GOF1 then
                emit LF1;
+               lightF1:=true;
             end present;
         end present;
         present CALLF2 or GOF2 then
+        %emit F2;
             stateF2 := true;
             present GOF2 then
                emit LF2;
+               lightF2:=true;
             end present;
         end present;
         present CALLF3 or GOF3 then
+        %emit F3;
             stateF3 := true;
             present GOF3 then
                emit LF3;
+               lightF3:=true;
             end present;
         end present;
         present CALLF4 or GOF4 then
+        %emit F4;
             stateF4 := true;
             present GOF4 then
                emit LF4;
+               lightF4:=true;
             end present;
         end present;
 
@@ -42,25 +50,37 @@ nextFloor:=1:integer in
             if ?CURRENTFLOOR = 1 then
                 if stateF1 then
                     stateF1 := false;
-                    emit LF1;
+                    if lightF1 then
+                        emit LF1;
+                        lightF1:=false;
+                    end if;
                     emit STOP;
                 end if;
             elsif ?CURRENTFLOOR = 2 then
                 if stateF2 then
                     stateF2 := false;
-                    emit LF2;
+                    if lightF2 then
+                        emit LF2;
+                        lightF2:=false;
+                    end if;
                     emit STOP;
                 end if;
             elsif ?CURRENTFLOOR = 3 then
                 if stateF3 then
                     stateF3 := false;
-                    emit LF3;
+                    if lightF3 then
+                        emit LF3;
+                        lightF3:=false;
+                    end if;
                     emit STOP;
                 end if;
             elsif ?CURRENTFLOOR = 4 then
                 if stateF4 then
                     stateF4 := false;
-                    emit LF4;
+                    if lightF4 then
+                        emit LF4;
+                        lightF4:=false;
+                    end if;
                     emit STOP;
                 end if;
             else
@@ -71,7 +91,7 @@ nextFloor:=1:integer in
             end if
         end present;
         
-        if elevatorFree and (stateF1 or stateF2 or stateF3 or stateF4) then
+        if elevatorFree and endprocess and (stateF1 or stateF2 or stateF3 or stateF4) then
             % SOMETHING TO DO WITH BUTTONS
             if elevatorUpState then
                 if stateF4 and nextFloor < 4 then
@@ -115,10 +135,12 @@ nextFloor:=1:integer in
                 end if;
             end if;
             elevatorFree := false;
-            emit LOUT;
-        else 
-            emit LOUT;
+            endprocess := false;
         end if;
+        
+        present ENDPROCESS then
+            endprocess := true;
+        end present;
 
         pause;
     end loop

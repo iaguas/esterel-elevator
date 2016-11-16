@@ -145,7 +145,7 @@ int main(int argc, char* argv[]) {
     /* Commands loop */
     while(1) {
         sleep(10);
-        printf("Put the next command (s-bx-cx-rep-q) :");
+        printf("Put the next command (s-bx-cx-rep-q) : ");
         
         while(1) {
             char* res=fgets(str,99,stdin);

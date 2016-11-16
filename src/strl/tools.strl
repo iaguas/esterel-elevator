@@ -24,7 +24,7 @@ module FloorProcessingTime:
     input SECOND;
 
     await SECOND; % It is needed to avoid instantaneous loops.
-    repeat 2-1 times   % 16-1 times
+    repeat 16-1 times
         await SECOND;
     end repeat;
     
@@ -34,7 +34,7 @@ end module
 module DoorAwaitingTime:
     input SECOND;
 
-    repeat 0 times			% 3 times
+    repeat 3 times
         await SECOND;
     end repeat;
 

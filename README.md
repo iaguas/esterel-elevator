@@ -29,7 +29,7 @@ There is a `makefile` programed to make all in a computer with esterel installed
 ## Esterel instalation
 All the files needed to install the esterel enviroment are [here](http://www.di.ens.fr/~pouzet/cours/mpri/esterelv5_92.linux.tar). The only thing to do is follow the README instructions.
 
-In the `/utils` directory can be discovered a file that defines the esterel grammar to use with a GtkSourceView program. Also 
+In the `/utils` directory can be discovered a file that defines the esterel grammar to use with a GtkSourceView program. Also a virtual machine with all the enviroment intalled can be downloaded from [here](https://drive.google.com/open?id=0BzMEc-aXNUQed0MwU240WVd2TDQ).
 
 ## Previous practical work
 In the `/utils` directory can be discovered some exercises about esterel y lustre. 
